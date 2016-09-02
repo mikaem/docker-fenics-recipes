@@ -1,8 +1,6 @@
 #!/bin/bash
 
-export BUILD="host-gcc"
-
-if [ "${BUILD}" = "host-gcc" ]; then
+if [ ${CONDA_BUILD_TYPE} = host-gcc ]; then
     # Dependencies
     conda build boost/host-gcc
     conda build vtk/host-gcc
@@ -16,7 +14,7 @@ if [ "${BUILD}" = "host-gcc" ]; then
 else
     # Dependencies
     conda build boost/conda-gcc
-    conda build vtk/conda-gcc
+#     conda build vtk/conda-gcc
     conda build hdf5-parallel/conda-gcc
     conda build h5py-parallel/conda-gcc
     conda build eigen3/conda-gcc

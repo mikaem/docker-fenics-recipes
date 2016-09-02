@@ -11,13 +11,14 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     echo ${CONDA_USERNAME} && \
     mkdir /home/${CONDA_USERNAME} && \
     cd /home/${CONDA_USERNAME} && \
-    apt-get -y install build-essential && \    
+    apt-get -qq update && \
+    apt-get -y --with-new-pkgs upgrade && \
+    apt-get -y install build-essential cmake gfortran libmpich-dev nano vim pkg-config bison wget && \
     git clone https://github.com/mikaem/docker-fenics-recipes.git && cd docker-fenics-recipes &&  \
     #./build_fenics_deps.sh && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \   
     conda clean --all && rm -rf /opt/conda/conda-bld/git-cache/*
 
-WORKDIR /home/${CONDA_USERNAME}
-
 USER root
+
