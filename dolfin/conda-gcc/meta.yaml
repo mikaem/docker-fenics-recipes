@@ -14,7 +14,7 @@ requirements:
     - python
     - openblas
     #- atlas
-    #- cmake
+    - cmake
     - gcc ==4.8.5
     - sphinx
     - libxml2

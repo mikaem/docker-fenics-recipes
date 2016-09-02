@@ -17,6 +17,7 @@ requirements:
     - mpi4py
     - gcc ==4.8.5
     - libgcc ==4.8.5
+    - cmake
     #- icu
     #- hwloc
     - hdf5-parallel

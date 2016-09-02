@@ -15,7 +15,7 @@ requirements:
     - python
     - zlib
     - mpi4py
-    - gcc
+    - gcc ==4.8.5
 
   run:
     - python

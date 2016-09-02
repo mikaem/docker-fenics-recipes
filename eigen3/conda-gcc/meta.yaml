@@ -13,7 +13,7 @@ build:
 requirements:
   build:
     - gcc ==4.8.5
-    #- cmake
+    - cmake
 
   run:
     - libgcc ==4.8.5

@@ -1,4 +1,5 @@
 # image containing Fenics dependencies built with conda
+# Using conda gcc
 
 FROM continuumio/anaconda:latest
 USER root
