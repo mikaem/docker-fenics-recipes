@@ -1,0 +1,25 @@
+# image containing Fenics dependencies built with conda
+
+FROM continuumio/anaconda:latest
+USER root
+
+COPY build_fenics.conf /root/build_fenics.conf
+
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    conda config --set always_yes yes && \
+    conda uninstall hdf5 h5py && \
+    . ~/build_fenics.conf && \
+    echo ${CONDA_USERNAME} && \
+    mkdir /home/${CONDA_USERNAME} && \
+    cd /home/${CONDA_USERNAME} && \
+    apt-get -qq update && \
+    apt-get -y --with-new-pkgs upgrade && \
+    apt-get -y install build-essential cmake gfortran libmpich-dev nano vim pkg-config bison wget && \
+    git clone https://github.com/mikaem/docker-fenics-recipes.git && cd docker-fenics-recipes &&  \
+    #./build_fenics_deps.sh && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \   
+    conda clean --all && rm -rf /opt/conda/conda-bld/git-cache/*
+
+USER root
+
