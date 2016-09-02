@@ -18,8 +18,8 @@ if [ ${CONDA_BUILD_TYPE} = host-gcc ]; then
     conda build ffc/host-gcc
     conda build dolfin/host-gcc
 #     conda build dolfin-vtk/host-gcc
-    conda build fenics/host-gcc
-#     conda build fenics-vtk/host-gcc
+    conda build fenics
+#     conda build fenics-vtk
 
 else
     conda build instant/conda-gcc
@@ -29,8 +29,8 @@ else
     conda build ffc/conda-gcc
     conda build dolfin/conda-gcc
 #     conda build dolfin-vtk/conda-gcc
-    conda build fenics/conda-gcc
-#     conda build fenics-vtk/conda-gcc
+    conda build fenics
+#     conda build fenics-vtk
 
 fi
 
