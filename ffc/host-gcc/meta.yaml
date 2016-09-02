@@ -4,7 +4,7 @@ package:
 
 source:
   git_url: https://bitbucket.org/fenics-project/ffc
-  git_tag: {{FENICS_GIT_TAG_FFC}}
+  git_tag: {{GIT_TAG_FFC}}
 
 build:
   number: {{CONDA_BUILD_NUMBER}}

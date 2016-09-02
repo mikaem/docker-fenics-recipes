@@ -34,6 +34,8 @@ else
 
 fi
 
+conda config --add channels ${CONDA_USERNAME}/label/${CONDA_BUILD_LABEL}
+
 # Upload all dependencies if not already there
 anaconda upload ${CONDA_BUILD_DIR}/boost-1.60.0-py27_${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
 anaconda upload ${CONDA_BUILD_DIR}/vtk-5.10.1-${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
