@@ -6,6 +6,8 @@ Description
 
 This repository contains recipes for building FEniCS for [Anaconda](https://anaconda.org) using [Docker](https://www.docker.com), starting from pure [Anaconda docker images](https://hub.docker.com/r/continuumio/). You may choose to compile FEniCS using conda's gcc, or a host gcc on the image. 
 
+Note that if you do not want to use Docker, then the recipes can also be used to build FEniCS on your own computer directly. In that case it is reccommended to use the host gcc version of the scripts (set CONDA_BUILD_TYPE to host-gcc).
+
 FEniCS built with conda gcc can be used by continuous integration tools like TravisCI and CircleCI.
 
 The script `build_fenics.conf` contains the following environment variables
@@ -39,4 +41,6 @@ If you want to create a final Docker image after building FEniCS, you should com
     docker commit -m 'Conda image with fenics installed' -a 'Mikael' 4401d51 docker-fenics:latest
     
  Here you need to get the correct container ID instead of 4401d51. Just check the previous line in the terminal to see the hash of the container.
+ 
+ To build without Docker, set parameters in `build.fenics.conf`, source it, and then run `build_fenics_deps.sh` and `build_fenics.sh` in that order.
  
