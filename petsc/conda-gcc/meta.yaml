@@ -18,24 +18,18 @@ requirements:
     - gcc ==4.8.5
     - libgcc ==4.8.5
     - cmake
-    #- icu
-    #- hwloc
-    - hdf5-parallel
+    - hwloc
 
   run:
     - python
     - openblas
     - mpi4py
-    - gcc ==4.8.5
     - libgcc ==4.8.5
-    #- icu
-    #- hwloc
-    - hdf5-parallel
+    - hwloc
 
 test:
   requires:
-    - gcc ==4.8.5
-    - libgcc ==4.8.5
+    - gcc
 
 about:
   home: http://www.mcs.anl.gov/petsc/

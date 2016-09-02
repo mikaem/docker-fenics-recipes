@@ -12,18 +12,18 @@ build:
 requirements:
   build:
     - python
-    - cmake
     - gcc ==4.8.5
-    - petsc ==3.7.3
+    - petsc <=3.7.3
+    - cmake
 
   run:
     - python
     - libgcc ==4.8.5
-    - petsc ==3.7.3
+    - petsc <=3.7.3
 
 test:
   requires:
-    - gcc ==4.8.5
+    - gcc
 
 about:
   home: http://www.grycap.upv.es/slepc/

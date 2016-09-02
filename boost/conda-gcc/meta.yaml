@@ -21,7 +21,7 @@ requirements:
     - icu               [unix]
     - bzip2             [unix]
     - zlib
-    - gcc
+    - gcc ==4.8.5
 
   run:
     # python dependency is here due to libboost-python library that depends on

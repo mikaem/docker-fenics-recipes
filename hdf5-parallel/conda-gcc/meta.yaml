@@ -12,13 +12,11 @@ build:
 
 requirements:
   build:
-    - python
     - zlib
     - mpi4py
     - gcc ==4.8.5
 
   run:
-    - python
     - zlib
 
 about:

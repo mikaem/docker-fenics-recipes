@@ -7,15 +7,20 @@ package:
 source:
   #url: http://www.vtk.org/files/release/6.3/VTK-6.3.0.tar.gz
   #fn:  vtk-6.3.0.tar.gz
-  url: http://www.vtk.org/files/release/5.10/vtk-5.10.1.tar.gz
-  fn: vtk-5.10.1.tar.gz
-  #path: /home/mikael/Software/VTK5.10.1
+  #url: http://www.vtk.org/files/release/5.10/vtk-5.10.1.tar.gz
+  #fn: vtk-5.10.1.tar.gz
+  path: /home/mikael/Software/VTK5.10.1
   #path: /home/mikael/Software/VTK-6.3.0
   #url: http://www.vtk.org/files/release/7.0/VTK-7.0.0.tar.gz
   #fn:  vtk-7.0.0.tar.gz
+  
+  #patches:
+    #- GLX_GLEXT_LEGACY.patch
+    #- dlls.patch                              [win]
+    #- apple.patch                             [osx]
 
 build:
-  number: {{CONDA_BUILD_NUMBER}}
+  number: 3
   has_prefix_files:                           [win]
     - Lib/site-packages/vtk/__init__.py       [win]
 
@@ -27,7 +32,6 @@ requirements:
     - cmake
     - python
     - mpi4py
-    - gcc ==4.8.5
     - hdf5-parallel
     
   run:

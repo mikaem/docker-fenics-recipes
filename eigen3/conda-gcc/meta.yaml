@@ -20,7 +20,7 @@ requirements:
 
 test:
   requires:
-    - gcc ==4.8.5
+    - gcc
 
   files:
     - test.cc

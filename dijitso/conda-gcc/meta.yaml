@@ -4,7 +4,8 @@ package:
 
 source:
   git_url: https://bitbucket.org/fenics-project/dijitso
-  git_tag: {{GIT_TAG_DIJITSO}}
+  #git_tag: master
+  git_tag: dijitso-{{FENICS_GIT_TAG}}
 
 build:
   number: {{CONDA_BUILD_NUMBER}}
