@@ -2,14 +2,13 @@
 
 for mod in INSTANT DIJITSO UFL FIAT FFC DOLFIN 
 do
-  if [ ${FENICS_VERSION: -3} == dev ]; then
-    declare GIT_TAG_${mod}=master
+  if [ ${FENICS_VERSION: -3} = dev ]; then
+    declare -x GIT_TAG_${mod}=master
 
   else
-    declare GIT_TAG_${mod}=${mod,,}-${FENICS_GIT_TAG}
+    declare -x GIT_TAG_${mod}=${mod,,}-${FENICS_GIT_TAG}
   fi
 done
-
 
 if [ ${CONDA_BUILD_TYPE} = host-gcc ]; then
     conda build instant/host-gcc
