@@ -4,8 +4,7 @@ package:
 
 source:
   git_url: https://bitbucket.org/fenics-project/instant
-  git_tag: master 
-  #git_tag: instant-{{FENICS_GIT_TAG}}
+  git_tag: {{GIT_TAG_INSTANT}}
 
 build:
   number: {{CONDA_BUILD_NUMBER}}

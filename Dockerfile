@@ -12,9 +12,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     mkdir /home/${CONDA_USERNAME} && \
     cd /home/${CONDA_USERNAME} && \
     apt-get -y install build-essential && \    
-    git clone https://github.com/mikaem/conda-recipes.git && cd conda-recipes && git checkout host-gcc && cd .. && \
-    git clone https://github.com/mikaem/fenics-recipes.git && cd fenics-recipes && git checkout host-gcc && \
-    chmod a+x build_fenics_deps.sh && \
+    git clone https://github.com/mikaem/docker-fenics-recipes.git && cd docker-fenics-recipes &&  \
     #./build_fenics_deps.sh && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \   

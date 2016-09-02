@@ -4,8 +4,7 @@ package:
 
 source:
   git_url: https://bitbucket.org/fenics-project/dolfin
-  #git_tag: master 
-  git_tag: dolfin-{{FENICS_GIT_TAG}}
+  git_tag: {{FENICS_GIT_TAG_DOLFIN}}
 
 build:
   number: {{CONDA_BUILD_NUMBER}}
