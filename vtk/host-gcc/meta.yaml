@@ -1,0 +1,61 @@
+package:
+  name: vtk
+  version: 5.10.1
+  #version: 6.3.0
+  #version: 7.0.0
+
+source:
+  #url: http://www.vtk.org/files/release/6.3/VTK-6.3.0.tar.gz
+  #fn:  vtk-6.3.0.tar.gz
+  #url: http://www.vtk.org/files/release/5.10/vtk-5.10.1.tar.gz
+  #fn: vtk-5.10.1.tar.gz
+  path: /home/mikael/Software/VTK5.10.1
+  #path: /home/mikael/Software/VTK-6.3.0
+  #url: http://www.vtk.org/files/release/7.0/VTK-7.0.0.tar.gz
+  #fn:  vtk-7.0.0.tar.gz
+  
+  #patches:
+    #- GLX_GLEXT_LEGACY.patch
+    #- dlls.patch                              [win]
+    #- apple.patch                             [osx]
+
+build:
+  number: 4
+  has_prefix_files:                           [win]
+    - Lib/site-packages/vtk/__init__.py       [win]
+
+  track_features:
+    - vtk
+
+requirements:
+  build:
+    - python
+    - mpi4py
+    - hdf5-parallel
+    
+  run:
+    - python
+    - mpi4py
+    - hdf5-parallel
+
+test:
+  imports:
+    - vtk
+    ##- vtk.vtkChartsCore
+    ##- vtk.vtkCommonCore
+    ##- vtk.vtkFiltersCore
+    ##- vtk.vtkFiltersGeneric
+    ##- vtk.vtkGeovisCore
+    ##- vtk.vtkFiltersHybrid
+    ##- vtk.vtkIOCore
+    ##- vtk.vtkImagingCore
+    ##- vtk.vtkInfovisCore
+    ##- vtk.vtkRenderingCore
+    ##- vtk.vtkViewsCore
+    ##- vtk.vtkRenderingVolume
+    ##- vtk.vtkInteractionWidgets
+
+about:
+  home: http://www.vtk.org/
+  license: BSD
+  summary: VTK is an open-source, freely available software system for 3D computer graphics

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cmake \
+  -DCMAKE_INSTALL_PREFIX=$PREFIX \
+  -DCMAKE_INCLUDE_PATH=$INCLUDE_PATH \
+  -DCMAKE_LIBRARY_PATH=$LIBRARY_PATH \
+  -DBUILD_SHARED_LIBS:BOOL=ON \
+  -DENABLE_TESTS=1 \
+  .
+make -j${CPU_COUNT}
+make install
+
+# cd $SRC_DIR
+# make test

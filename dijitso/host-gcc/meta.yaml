@@ -1,0 +1,38 @@
+package:
+  name: dijitso
+  version: {{FENICS_VERSION}}
+
+source:
+  git_url: https://bitbucket.org/fenics-project/dijitso
+  git_tag: master
+  #git_tag: dijitso-{{FENICS_GIT_TAG}}
+
+build:
+  number: {{CONDA_BUILD_NUMBER}}
+
+requirements:
+  build:
+    - python
+    - numpy
+    - six
+
+  run:
+    - python
+    - numpy
+    - six
+    - instant =={{FENICS_VERSION}}
+
+test:
+  imports:
+    - dijitso
+
+  requires:
+    - mpi4py
+    - pytest-cov
+    - pytest
+
+about:
+  home: http://www.fenicsproject.org
+  license: The GNU Lesser General Public License, version 3.0
+  summary: 'dijitso'
+

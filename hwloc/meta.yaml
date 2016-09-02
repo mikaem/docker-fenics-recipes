@@ -1,0 +1,19 @@
+package:
+  name: hwloc
+  version: "1.11.2"
+  
+source:
+  fn: hwloc-1.11.2.tar.gz
+  url: https://www.open-mpi.org/software/hwloc/v1.11/downloads/hwloc-1.11.2.tar.gz
+  md5: e4ca55c2a5c5656da4a4e37c8fc51b23
+
+build:
+  number: {{CONDA_BUILD_NUMBER}}
+
+requirements:
+
+  build:
+    - libxml2
+    - mpich2
+    
+

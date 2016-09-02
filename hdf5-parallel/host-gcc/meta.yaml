@@ -1,0 +1,25 @@
+package:
+  name: hdf5-parallel
+  version: 1.8.14
+
+source:
+  fn: hdf5-1.8.14.tar.bz2
+  url: http://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.14/src/hdf5-1.8.14.tar.bz2
+  md5: 719df6d46eea52e42dd97d59dcbf5311
+
+build:
+  number: {{CONDA_BUILD_NUMBER}}
+
+requirements:
+  build:
+    - python
+    - zlib
+    - mpi4py
+
+  run:
+    - zlib
+    - mpi4py
+
+about:
+  home: http://www.hdfgroup.org/HDF5/
+  license: BSD-style (http://www.hdfgroup.org/ftp/HDF5/current/src/unpacked/COPYING)

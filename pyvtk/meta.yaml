@@ -1,0 +1,23 @@
+package:
+  name: pyvtk
+  version: 0.4.85
+
+source:
+  fn: PyVTK-0.4.85.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyVTK/PyVTK-0.4.85.tar.gz
+
+build:
+  number: 2
+  binary_relocation: true
+
+requirements:
+  build:
+    - python
+    - pip
+  run:
+    - python
+
+about:
+  home: https://code.google.com/p/pyvtk/
+  license: New BSD License
+  summary: Tools for manipulating VTK files in Python

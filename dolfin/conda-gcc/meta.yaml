@@ -1,0 +1,64 @@
+package:
+  name: dolfin
+  version: {{FENICS_VERSION}}
+
+source:
+  git_url: https://bitbucket.org/fenics-project/dolfin
+  #git_tag: master 
+  git_tag: dolfin-{{FENICS_GIT_TAG}}
+
+build:
+  number: {{CONDA_BUILD_NUMBER}}
+
+requirements:
+  build:
+    - python
+    - openblas
+    #- atlas
+    #- cmake
+    - gcc ==4.8.5
+    - sphinx
+    - libxml2
+    - swig 
+    - numpy
+    - mpi4py
+    - mpich2
+    - ffc =={{FENICS_VERSION}}
+    - dijitso =={{FENICS_VERSION}}
+    - ply ==3.8
+    - boost
+    - eigen3
+    - petsc ==3.7.3
+    - petsc4py ==3.7.0
+    - slepc ==3.7.2
+    - hdf5-parallel
+
+  run:
+    - python
+    - openblas
+    #- atlas
+    - libxml2
+    - swig
+    - numpy
+    - mpi4py
+    - ffc =={{FENICS_VERSION}}
+    - dijitso =={{FENICS_VERSION}}
+    - ufl =={{FENICS_VERSION}}
+    - ply ==3.8
+    - boost
+    - eigen3
+    - petsc ==3.7.3
+    - petsc4py ==3.7.0
+    - slepc ==3.7.2
+    - hdf5-parallel
+    - libgcc ==4.8.5
+
+test:
+  imports:
+    - dolfin
+
+about:
+  home: http://www.fenicsproject.org
+  license: The GNU Lesser General Public License, version 3.0
+  summary: 'C++/Python library for solving differential equations'
+
