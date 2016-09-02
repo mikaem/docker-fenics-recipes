@@ -28,7 +28,7 @@ Build all dependencies in Docker using, e.g.,
 This creates an image called `docker-mybuild` with all dependencies installed. To build FEniCS enter the image itself and build:
 
     docker run -ti docker-mybuild:latest /bin/bash
-    cd /home/${CONDA_USERNAME}/docker-fenics-recipes
+    cd /home/${CONDA_USERNAME}/docker-fenics-recipes  #(use your actual username from build_fenics.conf)
     source build_fenics.conf
     ./build_fenics.sh
 
