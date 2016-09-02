@@ -36,7 +36,7 @@ This creates a docker container with FEniCS installed. Furthermore, all packages
 
 If you want to create a final Docker image after building FEniCS, you should commit the changes.
 
-    docker commit -m 'Conda image with fenics installed' -a 'Mikael' 4401d51 docker-mybuild:latest
+    docker commit -m 'Conda image with fenics installed' -a 'Mikael' 4401d51 docker-fenics:latest
     
  Here you need to get the correct container ID instead of 4401d51. Just check the previous line in the terminal to see the hash of the container.
  
