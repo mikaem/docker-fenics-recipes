@@ -3,12 +3,8 @@ package:
   version: {{FENICS_VERSION}}
 
 source:
-  #fn: ffc-1.6.0.tar.gz
-  #url: https://bitbucket.org/fenics-project/ffc/downloads/ffc-1.6.0.tar.gz
-  #md5: 358faa3e9da62a1b1a717070217b793e
   git_url: https://bitbucket.org/fenics-project/ffc
-  #git_tag: master
-  git_tag: ffc-{{FENICS_GIT_TAG}}
+  git_tag: {{GIT_TAG_FFC}}
   
 build:
   number: {{CONDA_BUILD_NUMBER}}

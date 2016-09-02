@@ -4,8 +4,7 @@ package:
 
 source:
   git_url: https://bitbucket.org/fenics-project/ufl
-  #git_tag: master
-  git_tag: ufl-{{FENICS_GIT_TAG}}
+  git_tag: {{GIT_TAG_UFL}}
 
 build:
   number: {{CONDA_BUILD_NUMBER}}
