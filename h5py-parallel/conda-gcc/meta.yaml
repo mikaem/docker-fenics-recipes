@@ -1,0 +1,33 @@
+package:
+  name: h5py-parallel
+  version: "2.6.0"
+
+source:
+  fn: 2.6.0.tar.gz
+  url: https://github.com/h5py/h5py/archive/2.6.0.tar.gz
+  md5: 613c5776192eaf02ff96a82dfc6d2e78
+
+build:
+  number: {{CONDA_BUILD_NUMBER}}
+
+requirements:
+  build:
+    - python
+    - numpy
+    - cython
+    - mpi4py
+    - six
+    - gcc
+    - pkgconfig
+    - hdf5-parallel
+
+  run:
+    - python
+    - numpy
+    - mpi4py
+    - hdf5-parallel
+    - six
+
+test:
+  imports:
+    - h5py
