@@ -59,7 +59,7 @@ A similar example of setting up a `circle.yml` file to use FEniCS for continuous
 
 See [fenicstools](https://github.com/mikaem/fenicstools) for a live project that is using both Travis CI and CircleCI.
 
-Usage or recipes
+Usage of recipes
 ----
 The script `build_fenics.conf` contains the following environment variables
 
