@@ -8,8 +8,56 @@ This repository contains recipes for building FEniCS for [Anaconda](https://anac
 
 Note that if you do not want to use Docker, then the recipes can also be used to build FEniCS on your own computer directly. In that case it is reccommended to use the host gcc version of the scripts (set CONDA_BUILD_TYPE to host-gcc).
 
-FEniCS built with conda gcc can be used by continuous integration tools like TravisCI and CircleCI.
+FEniCS built with conda gcc can be used to test your FEniCS application through continuous integration tools like TravisCI and CircleCI. For Travis you can include FEniCS in the `.travis.yml` file as:
 
+    language: python
+    
+    python:
+        - "2.7"
+    
+    sudo: false
+    
+    install:
+        - wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
+        - bash miniconda.sh -b -p $HOME/miniconda
+        - export PATH="$HOME/miniconda/bin:$PATH"
+        - unset PYTHONPATH
+        - conda config --set always_yes yes 
+        - conda config --add channels mikaem/label/docker-conda-gcc
+        - conda install fenics=2016.2.dev
+ 
+Change to `conda install fenics=2016.1` for a stable FEniCS 2016.1 installation. Note the line with `sudo: false`. This allows Travis to use a container-based infrastructure that ensures your build will start in seconds.
+
+CircleCI example of setting up `circle.yml` to use FEniCS:
+
+    machine:
+    environment:
+        CONDA_ROOT: /home/ubuntu/miniconda
+        PATH: ${CONDA_ROOT}/bin:${PATH}
+
+    dependencies:
+    cache_directories:
+        - /home/ubuntu/miniconda
+
+    override:
+        - >
+        if [[ ! -d ${CONDA_ROOT} ]]; then
+            echo "Installing Miniconda...";
+            wget --quiet https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh &&
+            bash Miniconda-latest-Linux-x86_64.sh -b -p ${CONDA_ROOT};
+        else
+            echo "Using cached Miniconda install";
+        fi
+        - conda config --set always_yes yes
+        - conda update -q conda
+        - conda info -a
+        - conda config --add channels mikaem/label/docker-conda-gcc
+        - conda install -y fenics=2016.2.dev
+
+See [fenicstools](https://github.com/mikaem/fenicstools) for a live project that is using both Travis CI and CircleCI.
+
+Usage
+----
 The script `build_fenics.conf` contains the following environment variables
 
   * CONDA_BUILD_TYPE         =host-gcc  (alternatively conda-gcc)
