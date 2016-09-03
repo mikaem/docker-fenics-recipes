@@ -85,6 +85,7 @@ This creates an image called `docker-mybuild` with all dependencies installed. T
     git pull  #(To get any changes to rep since image was made)
     source build_fenics.conf
     ./build_fenics.sh
+    ./anaconda_upload.sh
 
 This creates a docker container with FEniCS installed. Furthermore, all packages built will be uploaded to Anaconda cloud. This is why you need to set the correct CONDA_USERNAME in the build_fenics.conf file.
 
