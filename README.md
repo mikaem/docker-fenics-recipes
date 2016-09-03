@@ -82,6 +82,7 @@ This creates an image called `docker-mybuild` with all dependencies installed. T
 
     docker run -ti docker-mybuild:latest /bin/bash
     cd /home/${CONDA_USERNAME}/docker-fenics-recipes  #(use your actual username from build_fenics.conf)
+    git pull  #(To get any changes to rep since image was made)
     source build_fenics.conf
     ./build_fenics.sh
 
