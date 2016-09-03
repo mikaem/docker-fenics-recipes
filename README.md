@@ -76,6 +76,7 @@ Build all dependencies in Docker using, e.g.,
     git clone https://github.com/mikaem/docker-fenics-recipes.git
     cd docker-fenics-recipes 
     ... Modify variables
+    cp Dockerfiles.conda-gcc Dockerfiles     # Alternatively cp Dockerfiles.host-gcc Dockerfiles
     docker build --tag docker-mybuild:latest .
   
 This creates an image called `docker-mybuild` with all dependencies installed. To build FEniCS enter the image itself and build:
