@@ -90,11 +90,12 @@ This creates an image called `docker-mybuild` with all dependencies installed. T
 
 This creates a docker container with FEniCS installed. Furthermore, all packages built will be uploaded to Anaconda cloud. This is why you need to set the correct CONDA_USERNAME in the build_fenics.conf file.
 
-If you want to create a final Docker image after building FEniCS, you should commit the changes.
+If you want to create a final Docker image after building FEniCS, you should commit the changes after exiting the container.
 
+    exit  # exit docker container
     docker commit -m 'Conda image with fenics installed' -a 'Mikael' 4401d51 docker-fenics:latest
     
- Here you need to get the correct container ID instead of 4401d51. Just check the previous line in the terminal to see the hash of the container.
+ Here you need to get the correct container ID instead of 4401d51. Just check the line in the terminal before you exit to see the hash of the container.
  
  To build without Docker, set parameters in `build.fenics.conf`, source it, and then run `build_fenics_deps.sh` and `build_fenics.sh` in that order.
  
