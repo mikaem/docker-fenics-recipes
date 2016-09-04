@@ -66,7 +66,7 @@ The script `build_fenics.conf` contains the following environment variables
   * CONDA_BUILD_TYPE         =host-gcc  (alternatively conda-gcc)
   * CONDA_USERNAME           =mikaem      (A username on Anaconda cloud)
   * CONDA_BUILD_NUMBER       =12       
-  * CONDA_BUILD_LABEL        =docker-hostgcc  (Becomes the label on Anaconda Cloud)
+  * CONDA_BUILD_LABEL        =docker-host-gcc  (Becomes the label on Anaconda Cloud)
   * CONDA_BUILD_DIR          =/opt/conda/conda-bld/linux-64
   * FENICS_VERSION           =2016.2.dev  (2016.2.dev is current master. 2016.1 becomes stable build of 2016.1 tag)
   * FENICS_GIT_TAG           =2016.1.0    (If stable build is chosen, then the tag may be set here)
@@ -75,10 +75,10 @@ Build all dependencies in Docker using, e.g.,
 
     git clone https://github.com/mikaem/docker-fenics-recipes.git
     cd docker-fenics-recipes 
-    ... Modify variables
+    ... Modify variables in build_fenics.conf
     cp Dockerfiles.conda-gcc Dockerfiles     # Alternatively cp Dockerfiles.host-gcc Dockerfiles
     docker build --tag docker-mybuild:latest .
-  
+
 This creates an image called `docker-mybuild` with all dependencies installed. To build FEniCS enter the image itself and build:
 
     docker run -ti docker-mybuild:latest /bin/bash
@@ -88,7 +88,7 @@ This creates an image called `docker-mybuild` with all dependencies installed. T
     ./build_fenics.sh
     ./anaconda_upload.sh
 
-This creates a docker container with FEniCS installed. Furthermore, all packages built will be uploaded to Anaconda cloud. This is why you need to set the correct CONDA_USERNAME in the build_fenics.conf file.
+This creates a docker container with FEniCS installed as well as Anaconda. Furthermore, through `anaconda_upload.sh` all packages built will be uploaded to Anaconda cloud, which is why you need to set the correct CONDA_USERNAME in the build_fenics.conf file. For uploading you will be prompted for a password to anaconda cloud.
 
 If you want to create a final Docker image after building FEniCS, you should commit the changes after exiting the container.
 
