@@ -63,13 +63,15 @@ Usage of recipes
 ----
 The script `build_fenics.conf` contains the following environment variables
 
-  * CONDA_BUILD_TYPE         =host-gcc  (alternatively conda-gcc)
-  * CONDA_USERNAME           =mikaem      (A username on Anaconda cloud)
-  * CONDA_BUILD_NUMBER       =12       
-  * CONDA_BUILD_LABEL        =docker-host-gcc  (Becomes the label on Anaconda Cloud)
-  * CONDA_BUILD_DIR          =/opt/conda/conda-bld/linux-64
-  * FENICS_VERSION           =2016.2.dev  (2016.2.dev is current master. 2016.1 becomes stable build of 2016.1 tag)
-  * FENICS_GIT_TAG           =2016.1.0    (If stable build is chosen, then the tag may be set here)
+| Environment variable | default                     | alternatives                         |
+|:---------------------|:---------------------------:|:------------------------------------:|
+|CONDA_BUILD_TYPE      | host-gcc                    | (host-gcc, conda-gcc)                |
+|CONDA_USERNAME        | mikaem                      | Your username on Anaconda cloud      | 
+|CONDA_BUILD_NUMBER    | 1                           | Build number on Anaconda cloud       |
+|CONDA_BUILD_LABEL     | docker-${CONDA_BUILD_TYPE}  | The label on Anaconda Cloud          |
+|CONDA_BUILD_DIR       |/opt/conda/conda-bld/linux-64| None                                 |
+|FENICS_VERSION        |2016.2.dev                   | (2016.2.dev, 2016.1)                 |
+|FENICS_GIT_TAG        |2016.1.0                     |Tag used for stable build             |
 
 Build all dependencies in Docker using, e.g.,
 
