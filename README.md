@@ -68,7 +68,7 @@ The script `build_fenics.conf` contains the following environment variables
 |CONDA_BUILD_TYPE      | host-gcc                    | (host-gcc, conda-gcc)                |
 |CONDA_USERNAME        | mikaem                      | Your username on Anaconda cloud      | 
 |CONDA_BUILD_NUMBER    | 1                           | Build number on Anaconda cloud       |
-|CONDA_BUILD_LABEL     | docker-${CONDA_BUILD_TYPE}  | The label on Anaconda Cloud          |
+|CONDA_BUILD_LABEL     | docker-${CONDA_BUILD_TYPE}  | The label used for upload            |
 |CONDA_BUILD_DIR       |/opt/conda/conda-bld/linux-64| None                                 |
 |FENICS_VERSION        |2016.2.dev                   | (2016.2.dev, 2016.1)                 |
 |FENICS_GIT_TAG        |2016.1.0                     |Tag used for stable build             |
