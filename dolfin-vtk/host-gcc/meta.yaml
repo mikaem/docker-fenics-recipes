@@ -14,7 +14,6 @@ build:
 requirements:
   build:
     - python
-    #- cmake
     - sphinx
     - libxml2
     - swig 

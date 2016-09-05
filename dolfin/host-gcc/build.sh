@@ -17,7 +17,7 @@ export BOOST_ROOT=$PREFIX
 ln -s ${PREFIX}/bin/swig ${PREFIX}/bin/swig3.0
 
 cmake .. \
-  -DDOLFIN_ENABLE_VTK:BOOL=TRUE \
+  -DDOLFIN_ENABLE_VTK:BOOL=FALSE \
   -DDOLFIN_ENABLE_QT:BOOL=FALSE \
   -DDOLFIN_ENABLE_SCOTCH:BOOL=FALSE \
   -DDOLFIN_ENABLE_PASTIX:BOOL=FALSE \
@@ -47,7 +47,3 @@ cmake .. \
 
 make -j${CPU_COUNT}
 make install
-
-#   -DBoost_INCLUDE_DIR=/usr/include \
-#   -DBoost_LIBRARY_DIRS=/usr/lib/x86_64-linux-gnu \
-#   -DBoost_FILESYSTEM_LIBRARY=/usr/lib/x86_64-linux-gnu/libboost_filesystem.so \
