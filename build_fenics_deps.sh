@@ -14,9 +14,9 @@ if [ ${CONDA_BUILD_TYPE} = host-gcc ]; then
 else
     # Dependencies
 #    conda build boost/conda-gcc
-#    conda build vtk/conda-gcc
     conda build hdf5-parallel/conda-gcc
     conda build h5py-parallel/conda-gcc
+    conda build vtk/conda-gcc
     conda build hwloc/conda-gcc
 #    conda build eigen3/conda-gcc
     conda build petsc/conda-gcc
