@@ -21,6 +21,7 @@ requirements:
   run:
     - python
     - numpy
+    - mpi4py
     - petsc ==3.7.3
 
 test:
