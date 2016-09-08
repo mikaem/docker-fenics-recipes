@@ -23,7 +23,7 @@ requirements:
     - ffc =={{FENICS_VERSION}}
     - dijitso =={{FENICS_VERSION}}
     - ply ==3.8
-    - boost ==1.60.0
+    - boost ==1.61.0
     - eigen3
     - petsc <=3.7.3
     - petsc4py <=3.7.0
@@ -42,7 +42,7 @@ requirements:
     - dijitso =={{FENICS_VERSION}}
     - ufl =={{FENICS_VERSION}}
     - ply ==3.8
-    - boost ==1.60.0
+    - boost ==1.61.0
     - eigen3
     - petsc <=3.7.3
     - petsc4py <=3.7.0
