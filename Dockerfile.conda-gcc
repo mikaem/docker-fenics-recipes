@@ -16,7 +16,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -qq update && \
     apt-get -y --with-new-pkgs upgrade && \
     apt-get -y install build-essential nano vim && \
-    git clone https://github.com/mikaem/docker-fenics-recipes.git && cd docker-fenics-recipes &&  \
+    git clone https://github.com/mikaem/docker-fenics-recipes.git && cd docker-fenics-recipes && git checkout mikael/conda-forge && \
     conda config --add channels conda-forge && \
     conda install boost eigen && \
     ./build_fenics_deps.sh && \
