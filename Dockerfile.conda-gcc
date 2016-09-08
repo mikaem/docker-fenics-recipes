@@ -18,7 +18,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y install build-essential nano vim && \
     git clone https://github.com/mikaem/docker-fenics-recipes.git && cd docker-fenics-recipes && git checkout mikael/conda-forge && \
     conda config --add channels conda-forge && \
-    conda install boost eigen && \
+    conda config --set show_channel_urls True && \
+    conda update conda && \ 
+    conda install boost eigen vtk conda-build=1.21.4 && \
     ./build_fenics_deps.sh && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \   
