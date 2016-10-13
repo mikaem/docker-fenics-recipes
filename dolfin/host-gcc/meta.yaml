@@ -3,8 +3,9 @@ package:
   version: {{FENICS_VERSION}}
 
 source:
-  git_url: https://bitbucket.org/fenics-project/dolfin
-  git_tag: {{GIT_TAG_DOLFIN}}
+  #git_url: https://bitbucket.org/fenics-project/dolfin
+  #git_tag: {{GIT_TAG_DOLFIN}}
+  path: /Users/mikaelmortensen/MySoftware/dolfin
 
 build:
   number: {{CONDA_BUILD_NUMBER}}
@@ -12,12 +13,15 @@ build:
 requirements:
   build:
     - python
-    - boost
+    - cmake
+    - libxml2
+    - boost ==1.61
     - mpi4py
-    - eigen3
+    - eigen
     - petsc <=3.7.3
     - petsc4py <=3.7.0
     - slepc <=3.7.2
+    - vtk ==6.3.0
     - hdf5-parallel
     - sphinx
     - swig 
@@ -27,12 +31,13 @@ requirements:
 
   run:
     - python
-    - boost
+    - boost ==1.61
     - mpi4py
-    - eigen3
+    - eigen
     - petsc <=3.7.3
     - petsc4py <=3.7.0
     - slepc <=3.7.2
+    - vtk ==6.3.0
     - hdf5-parallel
     - swig
     - numpy

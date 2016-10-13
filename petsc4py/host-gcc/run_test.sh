@@ -1,2 +1,2 @@
-cd $SRC_DIR/test
-python runtests.py -s
+#cd $SRC_DIR/test
+#python runtests.py -s

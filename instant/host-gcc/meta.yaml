@@ -17,8 +17,9 @@ requirements:
   run:
     - python
     - numpy
-    #- cmake
+    - cmake
     - swig
+    - six
 
 test:
   imports:

@@ -12,12 +12,15 @@ build:
 
 requirements:
   build:
+    #- toolchain 
+    - python
     - zlib
     - mpi4py
-    - gcc ==4.8.5
+    - gcc-5 ==5.3.0
 
   run:
     - zlib
+    - mpi4py
 
 about:
   home: http://www.hdfgroup.org/HDF5/

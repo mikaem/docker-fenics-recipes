@@ -1,76 +1,78 @@
 #!/bin/bash
 
+# FIXME: This is a hack to make sure the environment is activated.
+# The reason this is required is due to the conda-build issue
+# mentioned below.
+#
+# https://github.com/conda/conda-build/issues/910
+#
+source activate "${CONDA_DEFAULT_ENV}"
+
 mkdir build
 cd build
 
-if [ `uname` == Linux ]; then
-    CC=gcc
-    CXX=g++
-    PY_LIB="libpython${PY_VER}.so"
+BUILD_CONFIG=Release
 
-    cmake .. \
-        -DCMAKE_C_COMPILER=$CC \
-        -DCMAKE_CXX_COMPILER=$CXX \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
-        -DCMAKE_INSTALL_RPATH:STRING="${PREFIX}/lib" \
-        -DCMAKE_C_FLAGS=-DGLX_GLXEXT_LEGACY \
-        -DCMAKE_CXX_FLAGS=-DGLX_GLXEXT_LEGACY \
-        -DVTK_WRAP_TCL:BOOL=OFF \
-        -DBUILD_DOCUMENTATION=OFF \
-        -DVTK_HAS_FEENABLEEXCEPT=OFF \
-        -DBUILD_TESTING=OFF \
-        -DBUILD_EXAMPLES=OFF \
-        -DBUILD_SHARED_LIBS=ON \
-        -DVTK_WRAP_PYTHON=ON \
-        -DPYTHON_EXECUTABLE=${PYTHON} \
-        -DPYTHON_INCLUDE_PATH=${PREFIX}/include/python${PY_VER} \
-        -DPYTHON_LIBRARY=${PREFIX}/lib/${PY_LIB} \
-        -DVTK_INSTALL_PYTHON_MODULE_DIR=${SP_DIR} \
-        -DModule_vtkRenderingMatplotlib=ON \
-        -DVTK_USE_X=ON \
-        -DVTK_PYTHON_SETUP_ARGS:STRING="--prefix=. --root=${PREFIX} --single-version-externally-managed"
-
+# sometimes python is suffixed, these are quick fixes to find some variables
+# in a future PR we should probably switch to cmake find python scripting
+PYTHON_INCLUDE="${PREFIX}/include/python${PY_VER}"
+if [ ! -d $PYTHON_INCLUDE ]; then
+    PYTHON_INCLUDE="${PREFIX}/include/python${PY_VER}m"
 fi
 
-if [ `uname` == Darwin ]; then
-    CC=cc
-    CXX=c++
-    PY_LIB="libpython${PY_VER}.dylib"
-    SDK_PATH="/Developer/SDKs/MacOSX10.6.sdk"
-
-    cmake .. \
-        -DCMAKE_C_COMPILER=$CC \
-        -DCMAKE_CXX_COMPILER=$CXX \
-        -DVTK_REQUIRED_OBJCXX_FLAGS='' \
-        -DVTK_USE_CARBON=OFF \
-        -DVTK_USE_TK=OFF \
-        -DIOKit:FILEPATH=${SDK_PATH}/System/Library/Frameworks/IOKit.framework \
-        -DVTK_USE_COCOA=ON \
-        -DCMAKE_INSTALL_PREFIX="$PREFIX" \
-        -DCMAKE_INSTALL_RPATH:STRING="$PREFIX/lib" \
-        -DBUILD_DOCUMENTATION=OFF \
-        -DVTK_HAS_FEENABLEEXCEPT=OFF \
-        -DBUILD_TESTING=OFF \
-        -DBUILD_EXAMPLES=OFF \
-        -DBUILD_SHARED_LIBS=ON \
-        -DVTK_WRAP_PYTHON=ON \
-        -DPYTHON_EXECUTABLE=${PYTHON} \
-        -DPYTHON_INCLUDE_PATH=${PREFIX}/include/python${PY_VER} \
-        -DPYTHON_LIBRARY=${PREFIX}/lib/${PY_LIB} \
-        -DVTK_INSTALL_PYTHON_MODULE_DIR=${SP_DIR} \
-        -DModule_vtkRenderingMatplotlib=ON \
-        -DVTK_USE_X=OFF
+PYTHON_LIBRARY_EXT="so"
+if [ `uname` = "Darwin" ] ; then
+    PYTHON_LIBRARY_EXT="dylib"
 fi
 
-make -j${CPU_COUNT}
-make install
-
-if [ `uname` == Linux ]; then
-    mv $PREFIX/lib/vtk-5.10/lib* $PREFIX/lib
-    sed -i 's/\/lib\/vtk-5.10\/lib/\/lib\/lib/g' $PREFIX/lib/vtk-5.10/VTKTargets-release.cmake
+PYTHON_LIBRARY="${PREFIX}/lib/libpython${PY_VER}.${PYTHON_LIBRARY_EXT}"
+if [ ! -f $PYTHON_LIBRARY ]; then
+    PYTHON_LIBRARY="${PREFIX}/lib/libpython${PY_VER}m.${PYTHON_LIBRARY_EXT}"
 fi
 
-if [ `uname` == Darwin ]; then
-    $SYS_PYTHON $RECIPE_DIR/osx.py
+# choose different screen settings for OS X and Linux
+if [ `uname` = "Darwin" ]; then
+    SCREEN_ARGS=(
+        "-DVTK_USE_X:BOOL=OFF"
+        "-DVTK_USE_COCOA:BOOL=ON"
+        "-DVTK_USE_CARBON:BOOL=OFF"
+    )
+else
+    SCREEN_ARGS=(
+        "-DVTK_USE_X:BOOL=ON"
+    )
 fi
+
+# now we can start configuring
+cmake .. -G "Ninja" \
+    -Wno-dev \
+    -DCMAKE_BUILD_TYPE=$BUILD_CONFIG \
+    -DCMAKE_INSTALL_PREFIX:PATH="${PREFIX}" \
+    -DCMAKE_INSTALL_RPATH:PATH="${PREFIX}/lib" \
+    -DBUILD_DOCUMENTATION:BOOL=OFF \
+    -DBUILD_TESTING:BOOL=OFF \
+    -DBUILD_EXAMPLES:BOOL=OFF \
+    -DBUILD_SHARED_LIBS:BOOL=ON \
+    -DPYTHON_EXECUTABLE:FILEPATH=$PYTHON \
+    -DPYTHON_INCLUDE_DIR:PATH=$PYTHON_INCLUDE \
+    -DPYTHON_LIBRARY:FILEPATH=$PYTHON_LIBRARY \
+    -DVTK_ENABLE_VTKPYTHON:BOOL=OFF \
+    -DVTK_WRAP_PYTHON:BOOL=ON \
+    -DVTK_PYTHON_VERSION:STRING="${PY_VER}" \
+    -DVTK_INSTALL_PYTHON_MODULE_DIR:PATH="${SP_DIR}" \
+    -DVTK_HAS_FEENABLEEXCEPT:BOOL=OFF \
+    -DVTK_RENDERING_BACKEND=OpenGL \
+    -DModule_vtkRenderingMatplotlib=ON \
+    -DVTK_USE_SYSTEM_ZLIB:BOOL=ON \
+    -DVTK_USE_SYSTEM_FREETYPE:BOOL=ON \
+    -DVTK_USE_SYSTEM_LIBXML2:BOOL=ON \
+    -DVTK_USE_SYSTEM_PNG:BOOL=ON \
+    -DVTK_USE_SYSTEM_JPEG:BOOL=ON \
+    -DVTK_USE_SYSTEM_TIFF:BOOL=ON \
+    -DVTK_USE_SYSTEM_EXPAT:BOOL=ON \
+    -DVTK_USE_SYSTEM_HDF5:BOOL=ON \
+    -DVTK_USE_SYSTEM_JSONCPP:BOOL=ON \
+    ${SCREEN_ARGS[@]}
+
+# compile & install!
+ninja install

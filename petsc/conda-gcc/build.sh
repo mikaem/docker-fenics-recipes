@@ -2,10 +2,11 @@
 
 export LIBRARY_PATH=$PREFIX/lib
 
-./configure \
+./configure LDFLAGS="-Wl,-rpath,$PREFIX/lib" \
   --prefix=$PREFIX \
-  --with-blas-lapack-lib=libopenblas.so \
+  --with-blas-lapack-lib=libopenblas.dylib \
   --with-mpi-dir=$PREFIX \
+  --with-hwloc=0 \
   --download-metis \
   --download-parmetis \
   --download-hypre \

@@ -14,11 +14,15 @@ requirements:
   build:
     - python
     - mpi4py
+    - mpich
+    - blas
     - hdf5-parallel
+    - cmake             [osx]
 
   run:
     - python
     - mpi4py
+    - blas
     - hdf5-parallel
 
 test:

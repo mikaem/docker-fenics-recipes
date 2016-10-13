@@ -34,10 +34,10 @@ if [ `uname` == Linux ]; then
 fi
 
 if [ `uname` == Darwin ]; then
-    CC=cc
-    CXX=c++
+    CC=gcc
+    CXX=g++
     PY_LIB="libpython${PY_VER}.dylib"
-    SDK_PATH="/Developer/SDKs/MacOSX10.6.sdk"
+    SDK_PATH="/Developer/SDKs/MacOSX10.12.sdk"
 
     cmake .. \
         -DCMAKE_C_COMPILER=$CC \
@@ -46,6 +46,8 @@ if [ `uname` == Darwin ]; then
         -DVTK_USE_CARBON=OFF \
         -DVTK_USE_TK=OFF \
         -DIOKit:FILEPATH=${SDK_PATH}/System/Library/Frameworks/IOKit.framework \
+        -DCMAKE_C_FLAGS=-DGLX_GLXEXT_LEGACY \
+        -DCMAKE_CXX_FLAGS=-DGLX_GLXEXT_LEGACY \
         -DVTK_USE_COCOA=ON \
         -DCMAKE_INSTALL_PREFIX="$PREFIX" \
         -DCMAKE_INSTALL_RPATH:STRING="$PREFIX/lib" \

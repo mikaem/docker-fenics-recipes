@@ -1,23 +1,23 @@
 package:
   name: vtk
-  version: 5.10.1
-  #version: 6.3.0
+  #version: 5.10.1
+  version: 6.3.0
   #version: 7.0.0
 
 source:
-  #url: http://www.vtk.org/files/release/6.3/VTK-6.3.0.tar.gz
-  #fn:  vtk-6.3.0.tar.gz
+  url: http://www.vtk.org/files/release/6.3/VTK-6.3.0.tar.gz
+  fn:  vtk-6.3.0.tar.gz
   #url: http://www.vtk.org/files/release/5.10/vtk-5.10.1.tar.gz
   #fn: vtk-5.10.1.tar.gz
-  path: /home/mikael/Software/VTK5.10.1
+  #path: /home/mikael/Software/VTK5.10.1
   #path: /home/mikael/Software/VTK-6.3.0
   #url: http://www.vtk.org/files/release/7.0/VTK-7.0.0.tar.gz
   #fn:  vtk-7.0.0.tar.gz
   
-  #patches:
+  patches:
     #- GLX_GLEXT_LEGACY.patch
     #- dlls.patch                              [win]
-    #- apple.patch                             [osx]
+    - apple.patch                             [osx]
 
 build:
   number: 3
@@ -33,7 +33,8 @@ requirements:
     - python
     - mpi4py
     - hdf5-parallel
-    
+    - gcc-5 ==5.3.0
+
   run:
     - python
     - mpi4py

@@ -14,11 +14,13 @@ requirements:
     - python
     - numpy
     - six
+    - subprocess32
 
   run:
     - python
     - numpy
     - six
+    - subprocess32
     - instant =={{FENICS_VERSION}}
 
 test:
@@ -26,6 +28,7 @@ test:
     - dijitso
 
   requires:
+    - python
     - mpi4py
     - pytest-cov
     - pytest
