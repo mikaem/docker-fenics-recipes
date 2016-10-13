@@ -14,12 +14,14 @@ requirements:
     - python
     - numpy
     - six
+    - subprocess32
 
   run:
     - python
     - numpy
     - six
     - instant =={{FENICS_VERSION}}
+    - subprocess32
 
 test:
   imports:

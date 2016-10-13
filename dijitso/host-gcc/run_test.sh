@@ -1,2 +1,2 @@
-cd $SRC_DIR/test
-./runtests.sh
+#cd $SRC_DIR/test
+#./runtests.sh
