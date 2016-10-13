@@ -21,7 +21,6 @@ requirements:
     - numpy
     - six
     - instant =={{FENICS_VERSION}}
-    - subprocess32
 
 test:
   imports:
