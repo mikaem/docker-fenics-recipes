@@ -34,7 +34,7 @@ test:
     - ffc.quadrature
     - ffc.tensor
     #- ffc_time_ext.time_elements_ext  # See #47
-    - ufc
+    #- ufc
 
   commands:
     - ffc --help
