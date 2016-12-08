@@ -1,0 +1,116 @@
+{% set version = "2016.1.0" %}
+{% set petsc_version = '3.7.*' %}
+
+package:
+  name: fenics
+  version: {{version}}
+
+source:
+  url: https://bitbucket.org/fenics-project/dolfin/downloads/dolfin-{{version}}.tar.gz
+  sha256: 6228b4d641829a4cd32141bfcd217a1596a27d5969aa00ee64ebba2b1c0fb148
+  patches:
+    - swig-py3.patch
+    - clang6-explicit-in-copy.patch  # [osx]
+
+build:
+  number: 5
+  skip: true  # [win]
+
+requirements:
+  build:
+    - python
+    - pip
+    - gcc  # [linux]
+    - boost 1.61.*
+    - cmake
+    - eigen
+    - pkg-config
+    - ptscotch
+    - toolchain
+    - zlib 1.2.*
+    - mpich
+    - petsc {{petsc_version}}
+    - petsc4py {{petsc_version}}
+    - slepc {{petsc_version}}
+    - slepc4py {{petsc_version}}
+    - swig >=3
+    - numpy
+    - ply
+    - six
+    - sympy
+
+  run:
+    - python
+    - boost 1.61.*
+    - cmake
+    - eigen
+    - gcc  # [linux]
+    - mpich
+    - petsc {{petsc_version}}
+    - petsc4py {{petsc_version}}
+    - slepc {{petsc_version}}
+    - slepc4py {{petsc_version}}
+    - pkg-config
+    - ptscotch
+    - zlib 1.2.*
+    - ply
+    - swig >=3
+    - numpy
+    - six
+    - sympy
+
+test:
+
+  requires:
+    - nose
+    - pytest
+    - git
+
+  imports:
+    - dijitso
+    - instant
+    - ufl
+    - ufl.utils
+    - ufl.finiteelement
+    - ufl.core
+    - ufl.corealg
+    - ufl.algorithms
+    - FIAT
+    - ffc
+    - ffc.backends
+    - ffc.backends.dolfin
+    - ffc.backends.ufc
+    - ffc.errorcontrol
+    - ffc.quadrature
+    - ffc.tensor
+    - ufc
+    - dolfin
+
+  commands:
+    - instant-clean
+    - instant-showcache
+
+    - ufl-version
+    - ufl2py --help
+
+    - ffc --help
+
+about:
+  home: http://www.fenicsproject.org
+  license: LGPL 3.0
+  license_file: COPYING.LESSER
+  summary: 'FEniCS is a collection of free software for automated, efficient solution of differential equations'
+
+  description: |
+    FEniCS is a collection of free software for automated, efficient solution of differential equations
+    (<http://fenicsproject.org>). It provides C++ and Python interfaces, and creates effecient solvers via
+    expression of finite variational statements in a domain-specific language that are transformed and
+    just-in-time compiled into efficient implementations.
+  doc_url: http://fenics.readthedocs.io/
+  dev_url: https://bitbucket.org/fenics-project/
+
+extra:
+  recipe-maintainers:
+    - garth-wells
+    - mikaem
+    - minrk
