@@ -7,5 +7,10 @@ else
   declare -x GIT_TAG_DOLFIN=DOLFIN-${FENICS_GIT_TAG}
 fi
 
-conda build cf-fenics
+if [ ${CONDA_BUILD_TYPE} = host-gcc ]; then
+    conda build cf-fenics/host-gcc
+
+else
+    conda build cf-fenics/conda-gcc
+fi
 
