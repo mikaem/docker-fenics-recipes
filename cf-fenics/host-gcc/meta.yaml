@@ -16,7 +16,6 @@ requirements:
   build:
     - python
     - pip
-    - gcc  # [linux]
     - boost 1.61.*
     - cmake
     - eigen
@@ -42,7 +41,6 @@ requirements:
     - boost 1.61.*
     - cmake
     - eigen
-    - gcc  # [linux]
     - mpich
     - petsc {{petsc_version}}
     - petsc4py {{petsc_version}}
