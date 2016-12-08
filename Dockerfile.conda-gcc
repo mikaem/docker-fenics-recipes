@@ -17,7 +17,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     cd /home/${CONDA_USERNAME} && \
     apt-get -qq update && \
     apt-get -y --with-new-pkgs upgrade && \
-    apt-get -y install build-essential nano vim && \
+    apt-get -y install build-essential nano vim freeglut3-dev libXt-devel mesa-libGLU-devel && \
     git clone https://github.com/mikaem/docker-fenics-recipes.git && cd docker-fenics-recipes &&  \
     git checkout mikael/cf && \
     ./build_fenics_deps.sh && \

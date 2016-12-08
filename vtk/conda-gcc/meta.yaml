@@ -32,12 +32,12 @@ requirements:
     - cmake
     - python
     - mpi4py
-    - hdf5-parallel
+    #- hdf5-parallel
     
   run:
     - python
     - mpi4py
-    - hdf5-parallel
+    #- hdf5-parallel
 
 test:
   imports:
