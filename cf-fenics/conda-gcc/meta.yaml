@@ -34,7 +34,7 @@ requirements:
     - ply
     - six
     - sympy
-    - vtk
+    - vtk 5.10.1
     - subprocess32  # [py2k]
 
   run:
@@ -56,7 +56,7 @@ requirements:
     - numpy
     - six
     - sympy
-    - vtk
+    - vtk 5.10.1
     - subprocess32  # [py2k]
 
 test:
