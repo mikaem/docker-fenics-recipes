@@ -1,19 +1,15 @@
-{% set version = "2016.1.0" %}
 {% set petsc_version = '3.7.*' %}
 
 package:
   name: fenics
-  version: {{version}}
+  version: {{FENICS_VERSION}}
 
 source:
-  url: https://bitbucket.org/fenics-project/dolfin/downloads/dolfin-{{version}}.tar.gz
-  sha256: 6228b4d641829a4cd32141bfcd217a1596a27d5969aa00ee64ebba2b1c0fb148
-  patches:
-    - swig-py3.patch
-    - clang6-explicit-in-copy.patch  # [osx]
+  git_url: https://bitbucket.org/fenics-project/dolfin
+  git_tag: {{GIT_TAG_DOLFIN}}
 
 build:
-  number: 5
+  number: {{CONDA_BUILD_NUMBER}} 
   skip: true  # [win]
 
 requirements:
@@ -38,6 +34,8 @@ requirements:
     - ply
     - six
     - sympy
+    - vtk
+    - subprocess32  # [py2k]
 
   run:
     - python
@@ -58,6 +56,8 @@ requirements:
     - numpy
     - six
     - sympy
+    - vtk
+    - subprocess32  # [py2k]
 
 test:
 
@@ -83,7 +83,6 @@ test:
     - ffc.errorcontrol
     - ffc.quadrature
     - ffc.tensor
-    - ufc
     - dolfin
 
   commands:
@@ -109,8 +108,4 @@ about:
   doc_url: http://fenics.readthedocs.io/
   dev_url: https://bitbucket.org/fenics-project/
 
-extra:
-  recipe-maintainers:
-    - garth-wells
-    - mikaem
-    - minrk
+
