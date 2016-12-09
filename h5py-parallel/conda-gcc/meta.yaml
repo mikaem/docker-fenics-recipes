@@ -17,7 +17,7 @@ requirements:
     - cython
     - mpi4py
     - six
-    - gcc ==4.8.5
+    - gcc
     - pkgconfig
     - hdf5-parallel
 

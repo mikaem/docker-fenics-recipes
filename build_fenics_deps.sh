@@ -6,9 +6,8 @@ if [ ${CONDA_BUILD_TYPE} = host-gcc ]; then
     conda build h5py-parallel/host-gcc
     conda build vtk/host-gcc
 else
-    # Dependencies
+    # Dependencies (Cannot build VTK with conda gcc)
     conda build hdf5-parallel/conda-gcc
     conda build h5py-parallel/conda-gcc
-    #conda build vtk/conda-gcc
 fi
 
