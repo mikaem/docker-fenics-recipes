@@ -34,7 +34,7 @@ requirements:
     - six
     - sympy
     - hdf5-parallel
-    - vtk 5.10
+    - vtk 5.10.1
     - subprocess32  # [py2k]
 
   run:
@@ -56,7 +56,7 @@ requirements:
     - six
     - sympy
     - hdf5-parallel
-    - vtk 5.10
+    - vtk 5.10.1
     - subprocess32  # [py2k]
 
 test:
