@@ -33,6 +33,7 @@ requirements:
     - ply
     - six
     - sympy
+    - hdf5-parallel
     - vtk 5.10
     - subprocess32  # [py2k]
 
@@ -54,6 +55,7 @@ requirements:
     - numpy
     - six
     - sympy
+    - hdf5-parallel
     - vtk 5.10
     - subprocess32  # [py2k]
 
