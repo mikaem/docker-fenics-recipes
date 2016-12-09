@@ -32,6 +32,7 @@ requirements:
     - swig >=3
     - numpy
     - ply
+    - hdf5-parallel
     - six
     - sympy
     - subprocess32  # [py2k]
@@ -53,6 +54,7 @@ requirements:
     - ply
     - swig >=3
     - numpy
+    - hdf5-parallel
     - six
     - sympy
     - subprocess32  # [py2k]
