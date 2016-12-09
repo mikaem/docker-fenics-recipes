@@ -9,6 +9,7 @@ if [ `uname` == Linux ]; then
     PY_LIB="libpython${PY_VER}.so"
 
     cmake .. \
+        -Wno-dev \
         -DCMAKE_C_COMPILER=$CC \
         -DCMAKE_CXX_COMPILER=$CXX \
         -DCMAKE_BUILD_TYPE=Release \

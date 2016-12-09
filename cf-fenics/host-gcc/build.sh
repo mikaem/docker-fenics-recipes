@@ -24,6 +24,7 @@ export INCLUDE_PATH=$PREFIX/include
 export PETSC_DIR=$PREFIX
 export SLEPC_DIR=$PREFIX
 export BLAS_DIR=$LIBRARY_PATH
+export SCOTCH_DIR=$PREFIX
 
 cmake .. \
   -DDOLFIN_ENABLE_OPENMP=off \

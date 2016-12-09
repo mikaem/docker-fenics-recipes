@@ -7,9 +7,9 @@ package:
 source:
   #url: http://www.vtk.org/files/release/6.3/VTK-6.3.0.tar.gz
   #fn:  vtk-6.3.0.tar.gz
-  url: http://www.vtk.org/files/release/5.10/vtk-5.10.1.tar.gz
-  fn: vtk-5.10.1.tar.gz
-  #path: /home/mikael/Software/VTK5.10.1
+  #url: http://www.vtk.org/files/release/5.10/vtk-5.10.1.tar.gz
+  #fn: vtk-5.10.1.tar.gz
+  path: /home/mikael/Software/VTK5.10.1
   #path: /home/mikael/Software/VTK-6.3.0
   #url: http://www.vtk.org/files/release/7.0/VTK-7.0.0.tar.gz
   #fn:  vtk-7.0.0.tar.gz
@@ -25,12 +25,10 @@ build:
 requirements:
   build:
     - python
-    - mpi4py
     - hdf5-parallel
-    
+
   run:
     - python
-    - mpi4py
     - hdf5-parallel
 
 test:

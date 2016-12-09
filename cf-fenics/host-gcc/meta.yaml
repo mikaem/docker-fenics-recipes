@@ -9,7 +9,7 @@ source:
   git_tag: {{GIT_TAG_DOLFIN}}
 
 build:
-  number: {{CONDA_BUILD_NUMBER}} 
+  number: {{CONDA_BUILD_NUMBER}}
   skip: true  # [win]
 
 requirements:
@@ -19,22 +19,25 @@ requirements:
     - boost 1.61.*
     - cmake
     - eigen
+    #- gcc
     - pkg-config
+    - scotch
     - ptscotch
     - toolchain
     - zlib 1.2.*
     - mpich
+    - hwloc
     - petsc {{petsc_version}}
     - petsc4py {{petsc_version}}
     - slepc {{petsc_version}}
-    - slepc4py {{petsc_version}}
+    #- slepc4py {{petsc_version}}
     - swig >=3
     - numpy
     - ply
     - six
     - sympy
-    - hdf5-parallel
-    - vtk 5.10.1
+    #- hdf5-parallel
+    #- vtk 5.10.1
     - subprocess32  # [py2k]
 
   run:
@@ -43,11 +46,14 @@ requirements:
     - cmake
     - eigen
     - mpich
+    #- gcc
+    - hwloc
     - petsc {{petsc_version}}
     - petsc4py {{petsc_version}}
     - slepc {{petsc_version}}
-    - slepc4py {{petsc_version}}
+    #- slepc4py {{petsc_version}}
     - pkg-config
+    - scotch
     - ptscotch
     - zlib 1.2.*
     - ply
@@ -55,8 +61,8 @@ requirements:
     - numpy
     - six
     - sympy
-    - hdf5-parallel
-    - vtk 5.10.1
+    #- hdf5-parallel
+    #- vtk 5.10.1
     - subprocess32  # [py2k]
 
 test:
