@@ -8,6 +8,8 @@ COPY build_fenics.conf /root/build_fenics.conf
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     conda config --set always_yes yes && \
+    conda config --add channels conda-forge && \
+    conda config --add channels mpi4py && \
     conda uninstall hdf5 h5py && \
     . ~/build_fenics.conf && \
     echo ${CONDA_USERNAME} && \
@@ -17,6 +19,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y --with-new-pkgs upgrade && \
     apt-get -y install build-essential cmake gfortran libmpich-dev nano vim pkg-config bison freeglut3-dev wget && \
     git clone https://github.com/mikaem/docker-fenics-recipes.git && cd docker-fenics-recipes &&  \
+    git checkout mikael/cf && \
     ./build_fenics_deps.sh && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \   

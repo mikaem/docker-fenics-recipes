@@ -9,6 +9,7 @@ COPY build_fenics.conf /root/build_fenics.conf
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     conda config --set always_yes yes && \
+    conda config --add channels conda-forge && \
     conda uninstall hdf5 h5py && \
     . ~/build_fenics.conf && \
     echo ${CONDA_USERNAME} && \
@@ -18,10 +19,12 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y --with-new-pkgs upgrade && \
     apt-get -y install build-essential nano vim && \
     git clone https://github.com/mikaem/docker-fenics-recipes.git && cd docker-fenics-recipes &&  \
-    ./build_fenics_deps.sh && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \   
-    conda clean --all && rm -rf /opt/conda/conda-bld/git-cache/* && rm -rf /opt/conda/conda-bld/work/*
+    git checkout mikael/cf && \
+    ./build_fenics_deps.sh
+
+    #apt-get clean && \
+    #rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \   
+    #conda clean --all && rm -rf /opt/conda/conda-bld/git-cache/* && rm -rf /opt/conda/conda-bld/work/*
 
 USER root
 
