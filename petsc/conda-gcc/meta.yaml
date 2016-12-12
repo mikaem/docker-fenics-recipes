@@ -1,3 +1,6 @@
+{% set blas = os.environ.get('BLAS') or 'openblas' %}
+{% set openblas_version = '0.2.19' %}
+
 package:
   name: petsc
   version: "3.7.3"
@@ -9,20 +12,31 @@ source:
 
 build:
   number: {{CONDA_BUILD_NUMBER}}
+  binary_relocation: true
+  detect_binary_files_with_prefix: true
+  skip: true  # [win]
+  features:
+    - blas_{{blas}}
 
 requirements:
   build:
     - python
-    - openblas
+    - blas 1.* {{blas}}
+    {% if blas == 'openblas' %}
+    - openblas {{openblas_version}}
+    {% endif %}
     - mpi4py
     - hdf5-parallel
-    - gcc 
+    - gcc
     - cmake
 
   run:
     - python
-    - openblas
     - mpi4py
+    - blas 1.* {{blas}}
+    {% if blas == 'openblas' %}
+    - openblas {{openblas_version}}
+    {% endif %}
 
 test:
   requires:

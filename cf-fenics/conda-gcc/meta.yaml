@@ -30,6 +30,7 @@ requirements:
     - slepc {{petsc_version}}
     #- slepc4py {{petsc_version}}
     - swig >=3
+    - openblas
     - numpy
     - ply
     - hdf5-parallel
@@ -53,6 +54,7 @@ requirements:
     - zlib 1.2.*
     - ply
     - swig >=3
+    - openblas
     - numpy
     - hdf5-parallel
     - six
