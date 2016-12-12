@@ -1,4 +1,3 @@
-{% set build = 1 %}
 {% set version = '3.7.0' %}
 {% set md5 = '816a20040a6a477bd637f397c9fb5b6d' %}
 {% set mpi = os.environ.get('MPI') or 'mpich' %}
@@ -13,7 +12,7 @@ source:
   md5: {{md5}}
 
 build:
-  number: {{build}}
+  number: {{CONDA_BUILD_NUMBER}}
   script: PETSC_DIR=$PREFIX pip install --no-deps .
   skip: true  # [win]
 
@@ -40,8 +39,3 @@ about:
   summary: Python bindings for PETSc
   license: BSD 2-Clause
   license_file: LICENSE.rst
-
-extra:
-  recipe-maintainers:
-    - dalcinl
-    - minrk

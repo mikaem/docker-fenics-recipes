@@ -22,7 +22,3 @@ about:
   home: http://www.grycap.upv.es/slepc/
   license: GNU Library or Lesser General Public License (LGPL)
   summary: 'SLEPc: Scalable Library for Eigenvalue Problem Computations'
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
