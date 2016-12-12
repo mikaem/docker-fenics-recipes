@@ -5,8 +5,9 @@ package:
   version: {{FENICS_VERSION}}
 
 source:
-  git_url: https://bitbucket.org/fenics-project/dolfin
-  git_tag: {{GIT_TAG_DOLFIN}}
+  git_url: https://bitbucket.org/fenics-project/dolfin # [linux]
+  git_tag: {{GIT_TAG_DOLFIN}}  # [linux]
+  path: /Users/mikaelmortensen/MySoftware/dolfin  # [osx]
 
 build:
   number: {{CONDA_BUILD_NUMBER}}
@@ -18,7 +19,8 @@ requirements:
     - pip
     - boost
     - cmake
-    - eigen3
+    - eigen3 # [linux]
+    - eigen # [osx]
     - pkg-config
     #- scotch
     #- ptscotch
@@ -34,15 +36,17 @@ requirements:
     - ply
     - six
     - sympy
-    - hdf5-parallel
-    - vtk 5.10.1
+    - hdf5-parallel 
+    - vtk 5.10.1    # [linux]
+    - vtk 6.3.0     # [osx]
     - subprocess32  # [py2k]
 
   run:
     - python
     - boost
     - cmake
-    - eigen3
+    - eigen3 # [linux]
+    - eigen # [osx]
     - mpi4py
     - petsc {{petsc_version}}
     - petsc4py {{petsc_version}}
@@ -58,7 +62,8 @@ requirements:
     - six
     - sympy
     - hdf5-parallel
-    - vtk 5.10.1
+    - vtk 5.10.1    # [linux]
+    - vtk 6.3.0     # [osx]
     - subprocess32  # [py2k]
 
 test:

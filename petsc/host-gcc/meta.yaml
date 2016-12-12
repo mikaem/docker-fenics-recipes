@@ -1,4 +1,5 @@
 {% set blas = os.environ.get('BLAS') or 'openblas' %}
+{% set openblas_version = '0.2.19' %}
 {% set mpi = os.environ.get('MPI') or 'mpich' %}
 {% set req = {'mpich':'>=3.2', 'openmpi':'>=1.10'} %}
 
@@ -19,8 +20,11 @@ requirements:
     - python
     #- {{mpi}} {{req[mpi]}}
     - mpi4py
-    - openblas
-    #- blas 1.* {{blas}}
+    - openblas # [linux]
+    - blas 1.* {{blas}} # [osx]
+    {% if blas == 'openblas' %} # [osx]
+    - openblas {{openblas_version}} # [osx]
+    {% endif %} # [osx]
     - hdf5-parallel
     - cmake
 
@@ -28,8 +32,11 @@ requirements:
     - python
     #- {{mpi}} {{req[mpi]}}
     - mpi4py
-    - openblas
-    #- blas
+    - openblas # [linux]
+    - blas 1.* {{blas}} # [osx]
+    {% if blas == 'openblas' %} # [osx]
+    - openblas {{openblas_version}} # [osx]
+    {% endif %} # [osx]
     - hdf5-parallel
 
 test:
