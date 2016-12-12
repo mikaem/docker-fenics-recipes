@@ -1,0 +1,69 @@
+{% set version = "6.3.0" %}
+{% set minor_version = ".".join(version.split(".")[:2]) %}
+
+package:
+  name: vtk
+  version: {{ version }}
+
+source:
+  url: http://www.vtk.org/files/release/{{ minor_version }}/VTK-{{ version }}.tar.gz
+  fn:  VTK-{{ version }}.tar.gz
+  sha256: 92a493354c5fa66bea73b5fc014154af5d9f3f6cee8d20a826f4cd5d4b0e8a5e
+
+build:
+  number: ${CONDA_BUILD_NUMBER}
+
+requirements:
+  build:
+    - toolchain
+    - cmake
+    - ninja
+    - python
+    # VTK Third Party dependencies
+    - zlib 1.2.*
+    - freetype 2.6.*
+    - hdf5-parallel
+    - libxml2
+    - libpng >=1.6.21,<1.7
+    - jpeg 9*
+    - libtiff 4.0.*
+    - jsoncpp  # [unix]
+    - expat
+  run:
+    - python
+    - future  # used in the generated python wrappers
+    # VTK Third Party dependencies
+    - zlib 1.2.*
+    - freetype 2.6.*
+    - hdf5-parallel  # [unix]
+    - libxml2
+    - libpng >=1.6.21,<1.7
+    - jpeg 9*
+    - libtiff 4.0.*
+    - jsoncpp  # [unix]
+    - expat
+
+test:
+  imports:
+    - vtk
+    - vtk.vtkChartsCore
+    - vtk.vtkCommonCore
+    - vtk.vtkFiltersCore
+    - vtk.vtkFiltersGeneric
+    - vtk.vtkGeovisCore
+    - vtk.vtkFiltersHybrid
+    - vtk.vtkIOCore
+    - vtk.vtkImagingCore
+    - vtk.vtkInfovisCore
+    - vtk.vtkRenderingCore
+    - vtk.vtkViewsCore
+    - vtk.vtkRenderingVolume
+    - vtk.vtkInteractionWidgets
+
+about:
+  home: http://www.vtk.org/
+  license: BSD 3-Clause
+  summary: >
+    The Visualization Toolkit (VTK) is an open-source, freely available software
+    system for 3D computer graphics, modeling, image processing, volume
+    rendering, scientific visualization, and information visualization.
