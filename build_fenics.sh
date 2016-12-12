@@ -10,7 +10,11 @@ fi
 if [ ${CONDA_BUILD_TYPE} = host-gcc ]; then
     conda build cf-fenics/host-gcc
 
-else
+elif [ ${CONDA_BUILD_TYPE} = conda-gcc ]; then
     conda build cf-fenics/conda-gcc
+
+else
+    conda build cf-fenics/osx-host
+
 fi
 
