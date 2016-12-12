@@ -16,17 +16,15 @@ requirements:
   build:
     - python
     - pip
-    - boost 1.61.*
+    - boost
     - cmake
-    - eigen
-    #- gcc
+    - eigen3
     - pkg-config
-    - scotch
-    - ptscotch
-    - toolchain
+    #- scotch
+    #- ptscotch
+    #- toolchain
     - zlib 1.2.*
-    - mpich
-    - hwloc
+    - mpi4py
     - petsc {{petsc_version}}
     - petsc4py {{petsc_version}}
     - slepc {{petsc_version}}
@@ -36,33 +34,31 @@ requirements:
     - ply
     - six
     - sympy
-    #- hdf5-parallel
-    #- vtk 5.10.1
+    - hdf5-parallel
+    - vtk 5.10.1
     - subprocess32  # [py2k]
 
   run:
     - python
-    - boost 1.61.*
+    - boost
     - cmake
-    - eigen
-    - mpich
-    #- gcc
-    - hwloc
+    - eigen3
+    - mpi4py
     - petsc {{petsc_version}}
     - petsc4py {{petsc_version}}
     - slepc {{petsc_version}}
     #- slepc4py {{petsc_version}}
     - pkg-config
-    - scotch
-    - ptscotch
+    #- scotch
+    #- ptscotch
     - zlib 1.2.*
     - ply
     - swig >=3
     - numpy
     - six
     - sympy
-    #- hdf5-parallel
-    #- vtk 5.10.1
+    - hdf5-parallel
+    - vtk 5.10.1
     - subprocess32  # [py2k]
 
 test:
