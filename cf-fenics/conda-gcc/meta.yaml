@@ -9,7 +9,7 @@ source:
   git_tag: {{GIT_TAG_DOLFIN}}
 
 build:
-  number: {{CONDA_BUILD_NUMBER}} 
+  number: {{CONDA_BUILD_NUMBER}}
   skip: true  # [win]
 
 requirements:
@@ -21,14 +21,14 @@ requirements:
     - cmake
     - eigen
     - pkg-config
-    - ptscotch
+    #- ptscotch
     - toolchain
     - zlib 1.2.*
     - mpich
     - petsc {{petsc_version}}
     - petsc4py {{petsc_version}}
     - slepc {{petsc_version}}
-    - slepc4py {{petsc_version}}
+    #- slepc4py {{petsc_version}}
     - swig >=3
     - numpy
     - ply
@@ -47,9 +47,9 @@ requirements:
     - petsc {{petsc_version}}
     - petsc4py {{petsc_version}}
     - slepc {{petsc_version}}
-    - slepc4py {{petsc_version}}
+    #- slepc4py {{petsc_version}}
     - pkg-config
-    - ptscotch
+    #- ptscotch
     - zlib 1.2.*
     - ply
     - swig >=3
