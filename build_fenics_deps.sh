@@ -16,5 +16,6 @@ else
     # Dependencies (Cannot build VTK with conda gcc)
     conda build hdf5-parallel/conda-gcc
     conda build h5py-parallel/conda-gcc
+    conda build petsc/conda-gcc
 fi
 

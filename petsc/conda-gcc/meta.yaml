@@ -15,7 +15,8 @@ requirements:
     - python
     - openblas
     - mpi4py
-    - gcc-5 ==5.3.0
+    - hdf5-parallel
+    - gcc 
     - cmake
 
   run:
