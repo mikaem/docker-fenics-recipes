@@ -13,8 +13,7 @@ build:
 requirements:
   build:
     - python
-    - mpi4py
-    - gcc ==4.8.5
+    - gcc
     - numpy
     - petsc ==3.7.3
 

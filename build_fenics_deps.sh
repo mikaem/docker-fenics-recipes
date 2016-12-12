@@ -17,5 +17,7 @@ else
     conda build hdf5-parallel/conda-gcc
     conda build h5py-parallel/conda-gcc
     conda build petsc/conda-gcc
+    conda build petsc4py/conda-gcc
+    conda build slepc/conda-gcc
 fi
 

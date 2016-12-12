@@ -12,13 +12,11 @@ build:
 requirements:
   build:
     - python
-    - gcc ==4.8.5
+    - gcc
     - petsc <=3.7.3
-    - cmake
 
   run:
     - python
-    - libgcc ==4.8.5
     - petsc <=3.7.3
 
 test:
