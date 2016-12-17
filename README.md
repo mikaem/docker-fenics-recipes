@@ -13,23 +13,27 @@ Continuous Integration with Travis CI or CircleCI
 
 FEniCS built with conda gcc can be used to test your FEniCS application through continuous integration tools like TravisCI and CircleCI. For Travis you can include FEniCS in the `.travis.yml` file as:
 
-    language: python
-    
-    python:
-        - "2.7"
-    
+    language: generic
+    os: osx
+    osx_image: xcode7.3
     sudo: false
+    env:
+        matrix:
+            - CONDA_PY=27
     
     install:
-        - wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
-        - bash miniconda.sh -b -p $HOME/miniconda
-        - export PATH="$HOME/miniconda/bin:$PATH"
-        - unset PYTHONPATH
-        - conda config --set always_yes yes 
-        - conda config --add channels mikaem/label/docker-conda-gcc
-        - conda install fenics=2016.2.dev
+        - MINICONDA_URL="https://repo.continuum.io/miniconda"
+        - MINICONDA_FILE="Miniconda-latest-MacOSX-x86_64.sh"
+        - curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+        - bash ${MINICONDA_FILE} -b -p $HOME/miniconda2
+        - export PATH="$HOME/miniconda2/bin:$PATH"
+        - conda config --set always_yes yes
+        - conda config --add channels conda-forge
+        - conda config --add channels mikaem/label/OSX-10.11-clang
+        - conda update -q conda
+        - conda install --yes fenics=2017.1.dev
  
-Change to `conda install fenics=2016.1` for a stable FEniCS 2016.1 installation. Note the line with `sudo: false`. This allows Travis to use a container-based infrastructure that ensures your build will start in seconds.
+Change to `conda install fenics=2016.2` for a stable FEniCS 2016.2 installation. Note the line with `sudo: false`. This allows Travis to use a container-based infrastructure that ensures your build will start in seconds.
 
 A similar example of setting up a `circle.yml` file to use FEniCS for continuous integration with CircleCI is:
 
@@ -55,7 +59,7 @@ A similar example of setting up a `circle.yml` file to use FEniCS for continuous
         - conda update -q conda
         - conda info -a
         - conda config --add channels mikaem/label/docker-conda-gcc
-        - conda install -y fenics=2016.2.dev
+        - conda install -y fenics=2017.1.dev
 
 See [fenicstools](https://github.com/mikaem/fenicstools) for a live project that is using both Travis CI and CircleCI.
 
@@ -70,8 +74,8 @@ The script `build_fenics.conf` contains the following environment variables
 |CONDA_BUILD_NUMBER    | 1                           | Build number on Anaconda cloud       |
 |CONDA_BUILD_LABEL     | docker-${CONDA_BUILD_TYPE}  | The label used for upload            |
 |CONDA_BUILD_DIR       |/opt/conda/conda-bld/linux-64| Depends on Anaconda installation     |
-|FENICS_VERSION        |2016.2.dev                   | (2016.2.dev, 2016.1)                 |
-|FENICS_GIT_TAG        |2016.1.0                     |Tag used for stable build             |
+|FENICS_VERSION        |2017.1.dev                   | (2017.1.dev, 2016.2)                 |
+|FENICS_GIT_TAG        |2016.2.0                     |Tag used for stable build             |
 
 Build all dependencies in Docker using, e.g.,
 
