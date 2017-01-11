@@ -1,5 +1,11 @@
-# export CC=$PREFIX/bin/gcc
-# export CXX=$PREFIX/bin/g++
+set -e
 
-cd $SRC_DIR
-make PETSC_DIR=$PREFIX PETSC_ARCH="" test
+export PETSC_DIR=${PREFIX}
+cd "src/snes/examples/tests"
+make ex1
+
+# FIXME: runex1 causes early termination with success (?!) on Linux
+# preventing upload. Still a complete mystery.
+if [[ "$(uname)" == "Darwin" ]]; then
+    make runex1
+fi

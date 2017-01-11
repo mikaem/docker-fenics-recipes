@@ -18,6 +18,13 @@ requirements:
     - python
     - petsc <=3.7.3
 
+test:
+  requires:
+    - pkg-config
+
+  commands:
+    - PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig pkg-config --cflags SLEPc
+
 about:
   home: http://www.grycap.upv.es/slepc/
   license: GNU Library or Lesser General Public License (LGPL)

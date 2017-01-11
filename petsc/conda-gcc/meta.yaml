@@ -39,6 +39,9 @@ requirements:
     {% endif %}
 
 test:
+  source_files:
+    - src/snes/examples/tests
+
   requires:
     - gcc
 

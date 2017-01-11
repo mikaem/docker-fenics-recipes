@@ -2,15 +2,15 @@
 
 if [ ${CONDA_BUILD_TYPE} = host-gcc ]; then
     # Dependencies
-    conda build subprocess32/host-gcc
-    conda build eigen3/host-gcc
-    conda build boost/host-gcc
-    conda build hdf5-parallel/host-gcc
-    conda build h5py-parallel/host-gcc
-    conda build vtk/host-gcc
+#     conda build subprocess32/host-gcc
+#     conda build eigen3/host-gcc
+#     conda build boost/host-gcc
+#     conda build hdf5-parallel/host-gcc
+#     conda build h5py-parallel/host-gcc
+#     conda build vtk/host-gcc
     conda build petsc/host-gcc
-    conda build petsc4py/host-gcc
-    conda build slepc/host-gcc
+#     conda build petsc4py/host-gcc
+#     conda build slepc/host-gcc
 
 elif [ ${CONDA_BUILD_TYPE} = conda-gcc ]; then
     # Cannot seem to build VTK with conda gcc

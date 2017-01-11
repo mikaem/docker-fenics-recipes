@@ -21,6 +21,7 @@ requirements:
     #- {{mpi}} {{req[mpi]}}
 
   run:
+    - python
     - zlib
     - mpi4py
     #- {{mpi}} {{req[mpi]}}

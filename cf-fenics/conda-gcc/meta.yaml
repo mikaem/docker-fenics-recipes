@@ -62,6 +62,8 @@ requirements:
     - subprocess32  # [py2k]
 
 test:
+  source_files:
+    - test
 
   requires:
     - nose

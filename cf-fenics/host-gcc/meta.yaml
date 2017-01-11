@@ -36,7 +36,7 @@ requirements:
     - ply
     - six
     - sympy
-    - hdf5-parallel 
+    - hdf5-parallel
     - vtk 5.10.1    # [linux]
     - vtk 6.3.0     # [osx]
     - subprocess32  # [py2k]
@@ -67,6 +67,8 @@ requirements:
     - subprocess32  # [py2k]
 
 test:
+  source_files:
+    - test
 
   requires:
     - nose

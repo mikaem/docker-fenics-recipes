@@ -40,8 +40,8 @@ requirements:
     - hdf5-parallel
 
 test:
-  requires:
-    #- gcc
+  source_files:
+    - src/snes/examples/tests
 
 about:
   home: http://www.mcs.anl.gov/petsc/
