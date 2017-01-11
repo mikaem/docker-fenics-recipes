@@ -14,7 +14,7 @@ source:
     - slepc.patch  # [osx]
 
 build:
-  number: {{build}}
+  number: {{CONDA_BUILD_NUMBER}}
   binary_relocation: true
   detect_binary_files_with_prefix: true
   skip: true  # [win]

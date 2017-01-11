@@ -22,13 +22,13 @@ elif [ ${CONDA_BUILD_TYPE} = conda-gcc ]; then
 
 else
     conda config --add channels conda-forge
-    conda build hdf5-parallel/osx-host
-    conda build h5py-parallel/osx-host
+    #conda build hdf5-parallel/osx-host
+    #conda build h5py-parallel/osx-host
     conda build petsc/osx-host
     conda build petsc4py/osx-host
     conda build slepc/osx-host
     conda build slepc4py/osx-host
-    conda build vtk/osx-host
+    #conda build vtk/osx-host
 
 fi
 
