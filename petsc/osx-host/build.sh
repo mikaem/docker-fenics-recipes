@@ -27,7 +27,8 @@ $PYTHON ./configure \
   --download-hypre \
   --download-metis \
   --download-parmetis \
-  --with-shapred-libraries \
+  --download-superlu_dist \
+  --with-shared-libraries \
   --prefix=$PREFIX
 
 sedinplace() { [[ $(uname) == Darwin ]] && sed -i "" $@ || sed -i"" $@; }

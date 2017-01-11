@@ -1,11 +1,15 @@
 #!/bin/bash
 
-if [ ${FENICS_VERSION: -3} = dev ]; then
-  declare -x GIT_TAG_DOLFIN=master
+for mod in INSTANT DIJITSO UFL FIAT FFC DOLFIN 
+do
+  if [[ ${FENICS_VERSION: -3} = "dev" ]]; then
+    declare -x GIT_TAG_${mod}=master
 
-else
-  declare -x GIT_TAG_DOLFIN=DOLFIN-${FENICS_GIT_TAG}
-fi
+  else
+    low=$(echo ${mod} | tr "[:upper:]" "[:lower:]")
+    declare -x GIT_TAG_${mod}=${low}-${FENICS_GIT_TAG}
+  fi
+done
 
 if [ ${CONDA_BUILD_TYPE} = host-gcc ]; then
     conda build cf-fenics/host-gcc
