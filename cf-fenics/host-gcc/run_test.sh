@@ -12,6 +12,9 @@ export INSTANT_CACHE_DIR=${PWD}/instant
 pushd "test/unit/python"
 TESTS="jit fem/test_form.py::test_assemble_linear"
 
+instant-clean
+dijitso clean
+
 RUN_TESTS="python -b -m pytest -vs $TESTS"
 # serial
 $RUN_TESTS
