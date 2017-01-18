@@ -25,11 +25,11 @@ build:
 requirements:
   build:
     - python
-    - hdf5-parallel
+    - hdf5-parallel 1.8.14
 
   run:
     - python
-    - hdf5-parallel
+    - hdf5-parallel 1.8.14
 
 test:
   imports:

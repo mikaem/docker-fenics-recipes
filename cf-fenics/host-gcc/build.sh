@@ -35,6 +35,8 @@ export UMFPACK_DIR=$PREFIX/lib
 export SLEPC_DIR=$PREFIX
 export BLAS_DIR=$LIBRARY_PATH
 export SCOTCH_DIR=$PREFIX
+export HDF5_DIR=$PREFIX
+export HDF5_ROOT=$PREFIX
 
 cmake .. \
   -DDOLFIN_ENABLE_OPENMP=off \
