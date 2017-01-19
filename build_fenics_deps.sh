@@ -9,8 +9,8 @@ if [ "${CONDA_BUILD_TYPE}" = "host-gcc" ]; then
     conda build h5py-parallel/host-gcc
     conda build vtk/host-gcc
     conda build petsc/host-gcc
-    conda build petsc4py/host-gcc --no-remove-work-dir
-    conda build slepc/host-gcc --no-remove-work-dir
+    conda build petsc4py/host-gcc 
+    conda build slepc/host-gcc 
 
 elif [ "${CONDA_BUILD_TYPE}" = "conda-gcc" ]; then
     # Cannot seem to build VTK with conda gcc
