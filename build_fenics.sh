@@ -11,14 +11,17 @@ do
   fi
 done
 
-if [ ${CONDA_BUILD_TYPE} = host-gcc ]; then
+if [ "${CONDA_BUILD_TYPE}" = "host-gcc" ]; then
     conda build cf-fenics/host-gcc
 
-elif [ ${CONDA_BUILD_TYPE} = conda-gcc ]; then
+elif [ "${CONDA_BUILD_TYPE}" = "conda-gcc" ]; then
     conda build cf-fenics/conda-gcc
 
-else
+elif [ "${CONDA_BUILD_TYPE}" = "osx-gcc" ]; then
     conda build cf-fenics/osx-host
+
+else
+	echo "Configure build_fenics.conf and source it before executing this"
 
 fi
 

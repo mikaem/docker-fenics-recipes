@@ -22,14 +22,14 @@ requirements:
     - mpi4py
     - six
     - pkgconfig
-    - hdf5-parallel
+    - hdf5-parallel 1.8.14
 
   run:
     - python
     - numpy
     #- {{mpi}}  {{req[mpi]}}
     - mpi4py
-    - hdf5-parallel
+    - hdf5-parallel 1.8.14
     - six
 
 test:
