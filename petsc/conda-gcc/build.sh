@@ -19,8 +19,6 @@ fi
   --download-metis \
   --download-parmetis \
   --download-hypre \
-  --download-scalapack \
-  --download-mumps \
   --download-superlu_dist \
   --download-suitesparse \
   --with-shared-libraries

@@ -2,8 +2,8 @@
 
 if [[ "$(uname)" == "Darwin" ]]; then
   export MACOSX_DEPLOYMENT_TARGET=10.9
-  export CXXFLAGS="-std=c++11 -stdlib=libc++ $CXXFLAGS -Wl,-rpath,$PREFIX/lib"
-  export LDFLAGS="-std=c++11 -stdlib=libc++ -Wl,-rpath,$PREFIX/lib"
+  export CXXFLAGS="-std=c++11 -stdlib=libc++ $CXXFLAGS"
+  export LDFLAGS="-Wl,-rpath,$PREFIX/lib $LDFLAGS"
 fi
 
 # Components (ffc, etc.)
@@ -16,16 +16,17 @@ do
     low=$(echo ${mod} | tr "[:upper:]" "[:lower:]")
     declare -x GIT_TAG_${mod}=${low}-${FENICS_GIT_TAG}
   fi
-done
-echo ${GIT_TAG_DIJITSO}
 
+done
+
+echo ${RECIPE_DIR}
 pip install --no-deps --no-binary :all: -r "${RECIPE_DIR}/component-requirements.txt"
 
 # DOLFIN
 
 # tarball includes cached swig output built with Python 2.
-# Remove it because it breaks building on Python 3.
-rm -rf dolfin/swig/modules
+# Regenerate with correct Python
+$PYTHON cmake/scripts/generate-swig-interface.py
 
 rm -rf build
 mkdir build
@@ -47,7 +48,8 @@ cmake .. \
   -DDOLFIN_ENABLE_SCOTCH=on \
   -DDOLFIN_ENABLE_PARMETIS=on \
   -DDOLFIN_ENABLE_HDF5=on \
-  -DDOLFIN_ENABLE_VTK=on \
+  -DDOLFIN_ENABLE_VTK=off \
+  -DDOLFIN_USE_PYTHON3=off \
   -DDOLFIN_SKIP_BUILD_TESTS=off \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DCMAKE_INCLUDE_PATH=$INCLUDE_PATH \

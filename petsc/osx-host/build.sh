@@ -13,6 +13,8 @@ $PYTHON ./configure \
   LDFLAGS="$LDFLAGS" \
   --with-fc=0 \
   --with-debugging=0 \
+  --CFLAGS=-mmacosx-version-min=10.9 \
+  --CXXFLAGS="-mmacosx-version-min=10.9 -stdlib=libc++" \
   --COPTFLAGS=-O3 \
   --CXXOPTFLAGS=-O3 \
   --LIBS=-Wl,-rpath,$PREFIX/lib \

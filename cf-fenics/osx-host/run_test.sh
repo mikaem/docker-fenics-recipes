@@ -6,10 +6,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
   export CXXFLAGS="-std=c++11 -stdlib=libc++ $CXXFLAGS"
 fi
 
-export INSTANT_CACHE_DIR=${PWD}/instant
+export DIJITSO_CACHE_DIR=${PWD}/instant
 
-# FIXME: remove SRC_DIR when updating to conda-build 2 with source_files
-pushd "${SRC_DIR}/test/unit/python"
+pushd "test/unit/python"
 TESTS="jit fem/test_form.py::test_assemble_linear"
 
 RUN_TESTS="python -b -m pytest -vs $TESTS"
