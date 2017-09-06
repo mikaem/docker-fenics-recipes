@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Changes the regex in CMake to accept GCC version number 3-6 rather than 3-5
+sed -i -e 's/345/3456/g' CMake/vtkCompilerExtras.cmake
+
 mkdir build
 cd build
 
@@ -16,7 +19,7 @@ if [ `uname` == Linux ]; then
         -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
         -DCMAKE_INSTALL_RPATH:STRING="${PREFIX}/lib" \
         -DCMAKE_C_FLAGS=-DGLX_GLXEXT_LEGACY \
-        -DCMAKE_CXX_FLAGS=-DGLX_GLXEXT_LEGACY \
+        -DCMAKE_CXX_FLAGS="-DGLX_GLXEXT_LEGACY -std=c++98" \
         -DVTK_WRAP_TCL:BOOL=OFF \
         -DBUILD_DOCUMENTATION=OFF \
         -DVTK_HAS_FEENABLEEXCEPT=OFF \
