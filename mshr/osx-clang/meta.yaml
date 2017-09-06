@@ -1,0 +1,35 @@
+#{% set version = "” %}
+package:
+  name: mshr
+  version: 2017.2.dev
+source:
+  git_url: https://bitbucket.org/fenics-project/mshr
+  git_tag: master
+
+  #patches:
+  #  - python3.patch  # [py3k]
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - python
+    - cmake
+    - fenics 2017.2.dev
+    - gmp
+    - mpfr
+  run:
+    - python
+    - cmake
+    - fenics 2017.2.dev
+    - gmp
+    - mpfr
+test:
+  imports:
+    - mshr
+
+about:
+  home: http://fenicsproject.org/
+  license: The GNU Lesser General Public License, version 3.0
+  summary: 'Mesh generation component of FEniCS'
