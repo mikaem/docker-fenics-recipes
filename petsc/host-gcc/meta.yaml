@@ -25,7 +25,7 @@ requirements:
     {% if blas == 'openblas' %} # [osx]
     - openblas {{openblas_version}} # [osx]
     {% endif %} # [osx]
-    - hdf5-parallel
+    #- hdf5-parallel 1.8.14
     - cmake
 
   run:
@@ -37,7 +37,7 @@ requirements:
     {% if blas == 'openblas' %} # [osx]
     - openblas {{openblas_version}} # [osx]
     {% endif %} # [osx]
-    - hdf5-parallel
+    #- hdf5-parallel 1.8.14
 
 test:
   source_files:

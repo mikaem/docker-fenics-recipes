@@ -16,7 +16,7 @@ if [ ${CONDA_BUILD_TYPE} = host-gcc ]; then
 
 elif [ ${CONDA_BUILD_TYPE} = osx-host ]; then
   #anaconda upload ${CONDA_BUILD_DIR}/vtk-6.3.0-py27_${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
-  anaconda upload ${CONDA_BUILD_DIR}/slepc4py-3.7.0-py27_${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
+  anaconda upload ${CONDA_BUILD_DIR}/slepc4py-3.7.0-py36_${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
   anaconda upload ${CONDA_BUILD_DIR}/petsc-3.7.4-blas_openblas_${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
   anaconda upload ${CONDA_BUILD_DIR}/slepc-3.7.1-${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
 
@@ -26,9 +26,9 @@ else
 
 fi
 
-#anaconda upload ${CONDA_BUILD_DIR}/hdf5-parallel-1.8.14-${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
-#anaconda upload ${CONDA_BUILD_DIR}/h5py-parallel-2.6.0-py27_${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
-anaconda upload ${CONDA_BUILD_DIR}/petsc4py-3.7.0-py27_${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
+anaconda upload ${CONDA_BUILD_DIR}/hdf5-parallel-1.8.14-${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
+anaconda upload ${CONDA_BUILD_DIR}/h5py-parallel-2.6.0-py36_${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
+anaconda upload ${CONDA_BUILD_DIR}/petsc4py-3.7.0-py36_${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
 
-anaconda upload ${CONDA_BUILD_DIR}/fenics-${FENICS_VERSION}-py27_${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
+anaconda upload ${CONDA_BUILD_DIR}/fenics-${FENICS_VERSION}-py36_${CONDA_BUILD_NUMBER}.tar.bz2 --label ${CONDA_BUILD_LABEL}
 

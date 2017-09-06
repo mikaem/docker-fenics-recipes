@@ -5,6 +5,8 @@ package:
   version: {{FENICS_VERSION}}
 
 source:
+  #git_url: https://bitbucket.org/fenics-project/dolfin.git
+  #git_tag: master
   path: /Users/mikaelmortensen/MySoftware/dolfin
 
 build:
@@ -19,7 +21,7 @@ requirements:
     - python
     - pip
     - gcc  # [linux]
-    - boost 1.61.*
+    - boost 1.63.*
     - cmake
     - eigen
     - pkg-config
@@ -31,18 +33,19 @@ requirements:
     - petsc4py {{petsc_version}}
     - slepc {{petsc_version}}
     - slepc4py {{petsc_version}}
-    - swig 3.0.10
+    - swig 3.0.12
     - numpy
     - ply
     - six
     - sympy
-    - vtk 6.3.0
     - hdf5-parallel
-    - subprocess32
+    #- subprocess32
+    #- vtk 6.3.0
 
   run:
     - python
-    - boost 1.61.*
+    - setuptools
+    - boost 1.63.*
     - cmake
     - eigen
     - gcc  # [linux]
@@ -55,20 +58,24 @@ requirements:
     - ptscotch
     - zlib 1.2.*
     - ply
-    - swig 3.0.10
+    - swig 3.0.12
     - numpy
     - six
     - sympy
-    - vtk 6.3.0
     - hdf5-parallel
-    - subprocess32
+    #- subprocess32
+    #- vtk 6.3.0
 
 test:
+
+  source_files:
+    - test
 
   requires:
     - nose
     - pytest
     - git
+    - decorator
 
   imports:
     - dijitso
@@ -86,7 +93,6 @@ test:
     - ffc.backends.ufc
     - ffc.errorcontrol
     - ffc.quadrature
-    - ffc.tensor
     - dolfin
 
   commands:

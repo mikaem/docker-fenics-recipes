@@ -7,7 +7,7 @@ package:
 source:
   git_url: https://bitbucket.org/fenics-project/dolfin # [linux]
   git_tag: {{GIT_TAG_DOLFIN}}  # [linux]
-  path: /Users/mikaelmortensen/MySoftware/dolfin  # [osx]
+  #path: /Users/mikaelmortensen/MySoftware/dolfin  # [osx]
 
 build:
   number: {{CONDA_BUILD_NUMBER}}
@@ -36,7 +36,7 @@ requirements:
     - ply
     - six
     - sympy
-    - hdf5-parallel
+    - hdf5-parallel 1.8.14 
     - vtk 5.10.1    # [linux]
     - vtk 6.3.0     # [osx]
     - subprocess32  # [py2k]
@@ -61,7 +61,7 @@ requirements:
     - numpy
     - six
     - sympy
-    - hdf5-parallel
+    - hdf5-parallel 1.8.14
     - vtk 5.10.1    # [linux]
     - vtk 6.3.0     # [osx]
     - subprocess32  # [py2k]

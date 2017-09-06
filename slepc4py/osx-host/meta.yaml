@@ -13,7 +13,7 @@ source:
 
 build:
   number: {{CONDA_BUILD_NUMBER}}
-  script: PETSC_DIR=$PREFIX SLEPC_DIR=$PREFIX pip install --no-deps .
+  script: PETSC_DIR=$PREFIX SLEPC_DIR=$PREFIX MACOSX_DEPLOYMENT_TARGET=10.9 pip install --no-deps .
   skip: true  # [win]
 
 requirements:
