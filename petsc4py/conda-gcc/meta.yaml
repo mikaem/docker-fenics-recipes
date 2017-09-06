@@ -9,18 +9,21 @@ source:
 
 build:
   number: {{CONDA_BUILD_NUMBER}}
+  script: PETSC_DIR=$PREFIX pip install --no-deps .
 
 requirements:
   build:
     - python
-    - gcc
+    - gcc 4.8.*
+    - libgcc 4.8.*
     - numpy
-    - petsc ==3.7.3
+    - petsc 3.7.3
 
   run:
     - python
     - numpy
-    - petsc ==3.7.3
+    - petsc 3.7.3
+    - libgcc 4.8.*
 
 test:
   imports:

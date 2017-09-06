@@ -5,7 +5,7 @@ export PETSC_DIR=$PREFIX
 
 # ln -s $PREFIX/bin/gfortran $PREFIX/bin/f95
 
-./configure --prefix=$PREFIX
+python2 ./configure --prefix=$PREFIX
 make
 make install
 

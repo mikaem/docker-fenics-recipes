@@ -11,7 +11,7 @@ else
     SO=so
 fi
 
-./configure LDFLAGS="-Wl,-rpath,$PREFIX/lib" \
+python2 ./configure LDFLAGS="-Wl,-rpath,$PREFIX/lib" \
   --prefix=$PREFIX \
   --with-blas-lapack-lib=libopenblas.$SO \
   --with-mpi-dir=$PREFIX \
