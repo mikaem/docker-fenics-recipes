@@ -18,7 +18,8 @@ requirements:
     - python
     - zlib 1.2.*
     - mpich
-    - gcc ==4.8.5
+    - gcc 4.8.*
+    - libgcc 4.8.*
 
   run:
     - zlib
