@@ -7,7 +7,7 @@ package:
 
 source:
   fn: hdf5-1.8.17.tar.bz2
-  url: http://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.17/src/hdf5-1.8.17.tar.bz2
+  url: https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.17/src/hdf5-1.8.17.tar.bz2
   md5: 34bd1afa5209259201a41964100d6203
 
 build:

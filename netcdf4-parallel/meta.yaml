@@ -1,0 +1,51 @@
+{% set version = "1.3.1" %}
+
+package:
+  name: netcdf4-parallel
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/n/netCDF4/netCDF4-{{ version }}.tar.gz
+  sha256: 570ea59992aa6d98a9b672c71161d11ba5683f787da53446086077470a869957
+
+build:
+  number: 1
+  entry_points:
+    - ncinfo = netCDF4.utils:ncinfo
+    - nc4tonc3 = netCDF4.utils:nc4tonc3
+    - nc3tonc4 = netCDF4.utils:nc3tonc4
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.11
+    - cython >=0.19
+    - hdf5-parallel
+    - mpi4py
+    - libnetcdf-parallel
+  run:
+    - python
+    - setuptools
+    - numpy >=1.11
+    - mpi4py
+    - hdf5-parallel
+    - libnetcdf-parallel
+
+test:
+  imports:
+    - netCDF4
+    - netcdftime
+  commands:
+    - ncinfo -h
+    - nc4tonc3 -h
+    - nc3tonc4 -h
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+
+about:
+  home: http://github.com/Unidata/netcdf4-python
+  license: OSI Approved and MIT
+  summary: 'Provides an object-oriented python interface to the netCDF version 4 library.'
+  dev_url: https://github.com/Unidata/netcdf4-python
+  doc_url: https://unidata.github.io/netcdf4-python

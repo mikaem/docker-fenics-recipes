@@ -21,7 +21,7 @@ requirements:
     - python
     - pip
     - gcc  # [linux]
-    - boost 1.63.*
+    - boost 1.64.*
     - cmake
     - eigen
     - pkg-config
@@ -39,13 +39,13 @@ requirements:
     - six
     - sympy
     - hdf5-parallel
-    #- subprocess32
+    - subprocess32  # [py2k]
     #- vtk 6.3.0
 
   run:
     - python
     - setuptools
-    - boost 1.63.*
+    - boost 1.64.*
     - cmake
     - eigen
     - gcc  # [linux]
@@ -63,7 +63,7 @@ requirements:
     - six
     - sympy
     - hdf5-parallel
-    #- subprocess32
+    - subprocess32  # [py2k]
     #- vtk 6.3.0
 
 test:
