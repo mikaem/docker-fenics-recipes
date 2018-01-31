@@ -2,6 +2,7 @@
 
 if [[ $(uname) == Darwin ]]; then
     export LDFLAGS="-headerpad_max_install_names $LDFLAGS"
+    export MACOSX_DEPLOYMENT_TARGET=10.9
 fi
 
 export netCDF4_DIR=$PREFIX

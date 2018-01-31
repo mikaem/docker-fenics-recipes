@@ -14,7 +14,7 @@ cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
       -D ENABLE_DOXYGEN=OFF \
       -D ENABLE_LOGGING=ON \
       -D CURL_INCLUDE_DIR=$PREFIX/include \
-      -D CURL_LIBRARY=$PREFIX/lib/libcurl${SHLIB_EXT} \
+      -D CURL_LIBRARY=$PREFIX/lib/libcurl.dylib \
       $SRC_DIR
 make -j$CPU_COUNT
 # ctest  # Run only for the shared lib build to save time.
@@ -34,7 +34,7 @@ cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
       -D ENABLE_DOXYGEN=OFF \
       -D ENABLE_LOGGING=ON \
       -D CURL_INCLUDE_DIR=$PREFIX/include \
-      -D CURL_LIBRARY=$PREFIX/lib/libcurl${SHLIB_EXT} \
+      -D CURL_LIBRARY=$PREFIX/lib/libcurl.dylib \
       $SRC_DIR
 make -j$CPU_COUNT
 ctest
