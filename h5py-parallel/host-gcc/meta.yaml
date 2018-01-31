@@ -3,12 +3,12 @@
 
 package:
   name: h5py-parallel
-  version: "2.6.0"
+  version: "2.7.0"
 
 source:
-  fn: 2.6.0.tar.gz
-  url: https://github.com/h5py/h5py/archive/2.6.0.tar.gz
-  md5: 613c5776192eaf02ff96a82dfc6d2e78
+  fn: 2.7.0rc2.tar.gz
+  url: https://github.com/h5py/h5py/archive/2.7.0rc2.tar.gz
+  md5: 09dab86c5758f631cfce85dc9cd1a9f0
 
 build:
   number: {{CONDA_BUILD_NUMBER}}
@@ -22,14 +22,14 @@ requirements:
     - mpi4py
     - six
     - pkgconfig
-    - hdf5-parallel 1.8.14
+    - hdf5-parallel 1.8.17
 
   run:
     - python
     - numpy
     #- {{mpi}}  {{req[mpi]}}
     - mpi4py
-    - hdf5-parallel 1.8.14
+    - hdf5-parallel 1.8.17
     - six
 
 test:

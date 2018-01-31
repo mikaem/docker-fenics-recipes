@@ -27,7 +27,8 @@ requirements:
     {% endif %}
     - mpi4py
     - hdf5-parallel
-    - gcc
+    - gcc 4.8.*
+    - libgcc 4.8.*
     - cmake
 
   run:
@@ -37,6 +38,7 @@ requirements:
     {% if blas == 'openblas' %}
     - openblas {{openblas_version}}
     {% endif %}
+    - libgcc 4.8.*
 
 test:
   source_files:

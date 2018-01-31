@@ -17,7 +17,8 @@ requirements:
     - cython
     - mpi4py
     - six
-    - gcc
+    - gcc 4.8.*
+    - libgcc 4.8.*
     - pkgconfig
     - hdf5-parallel
 
@@ -27,6 +28,7 @@ requirements:
     - mpi4py
     - hdf5-parallel
     - six
+    - libgcc 4.8.*
 
 test:
   imports:
