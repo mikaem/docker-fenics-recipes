@@ -2,13 +2,14 @@
 # image containing Fenics dependencies built with conda
 # Using conda gcc
 
-FROM continuumio/anaconda:latest
+FROM continuumio/anaconda3:latest
 USER root
 
 COPY build_fenics.conf /root/build_fenics.conf
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     conda config --set always_yes yes && \
+    conda install conda-build && \
     conda config --add channels conda-forge && \
     conda uninstall hdf5 h5py && \
     . ~/build_fenics.conf && \

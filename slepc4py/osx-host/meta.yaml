@@ -1,5 +1,5 @@
-{% set version = '3.7.0' %}
-{% set sha256 = '5836334ec62f007b0e527c3d63577a43fee3c870c80df23256c55521ad6f4cc6' %}
+{% set version = '3.8.0' %}
+{% set sha256 = '35a71a5f83d8fbbede20e235613ac51164cc31db7599c5e78938337ac8b35c5f' %}
 {% set mpi = os.environ.get('MPI') or 'mpich' %}
 
 package:
@@ -18,6 +18,7 @@ build:
 
 requirements:
   build:
+    - toolchain
     - python
     - pip
     - numpy

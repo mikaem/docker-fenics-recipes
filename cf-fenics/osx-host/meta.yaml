@@ -1,4 +1,4 @@
-{% set petsc_version = '3.7.*' %}
+{% set petsc_version = '3.8.*' %}
 
 package:
   name: fenics
@@ -21,7 +21,7 @@ requirements:
     - python
     - pip
     - gcc  # [linux]
-    - boost 1.63.*
+    - boost 1.64.*
     - cmake
     - eigen
     - pkg-config
@@ -38,6 +38,7 @@ requirements:
     - ply
     - six
     - sympy
+    - sphinx
     - hdf5-parallel
     #- subprocess32
     #- vtk 6.3.0
@@ -45,7 +46,7 @@ requirements:
   run:
     - python
     - setuptools
-    - boost 1.63.*
+    - boost 1.64.*
     - cmake
     - eigen
     - gcc  # [linux]
