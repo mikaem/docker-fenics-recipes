@@ -15,20 +15,24 @@ source:
     - CMakeLists.patch  # [win]
 
 build:
-  number: 1
+  number: 3
 
 requirements:
   build:
     - cmake
+    - make
     - pkg-config
-    - curl >=7.44.0,<8
-    - zlib 1.2.11
-    - mpich
-    - hdf5-parallel
+    - {{ compiler('c') }}
+  host:
+    - curl
+    - zlib
+    - {{ mpi }}
+    - hdf5 1.10.4 mpi_{{ mpi }}_*
   run:
-    - curl >=7.44.0,<8
-    - zlib 1.2.11
-    - hdf5-parallel
+    - curl
+    - zlib
+    - {{ mpi }}
+    - hdf5 1.10.4 mpi_{{ mpi }}_*
 
 test:
   commands:

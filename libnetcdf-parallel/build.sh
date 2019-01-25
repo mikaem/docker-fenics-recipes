@@ -1,4 +1,11 @@
 #!/bin/bash
+
+#if [[ "$c_compiler" == "toolchain_c" ]]; then
+#  # unset sysconfig patch set by other compiler package
+#  # which is wrong with toolchain_c registered
+#  unset _CONDA_PYTHON_SYSCONFIGDATA_NAME
+#fi
+
 export CC=mpicc
 
 # Build static.
@@ -16,6 +23,7 @@ cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
       -D CURL_INCLUDE_DIR=$PREFIX/include \
       -D CURL_LIBRARY=$PREFIX/lib/libcurl${SHLIB_EXT} \
       $SRC_DIR
+
 make -j$CPU_COUNT
 # ctest  # Run only for the shared lib build to save time.
 make install -j$CPU_COUNT
