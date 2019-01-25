@@ -17,20 +17,23 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
+  host:
     - python
-    - setuptools
+    - pip
     - numpy
     - cython >=0.19
+    - cftime >=1.0.1
     - {{ mpi }}
     - hdf5 1.10.4 mpi_{{ mpi }}_*
     - mpi4py
     - libnetcdf-parallel
-    - {{ compiler('c') }}
   run:
     - python
-    #- setuptools
+    - setuptools
     - numpy
     - mpi4py
+    - cftime
     - {{ mpi }}
     - hdf5
     - libnetcdf-parallel
@@ -38,7 +41,7 @@ requirements:
 test:
   imports:
     - netCDF4
-    - netcdftime
+    - cftime
   commands:
     - ncinfo -h
     - nc4tonc3 -h
