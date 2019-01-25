@@ -1,4 +1,17 @@
 #!/bin/bash
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  export MACOSX_DEPLOYMENT_TARGET=10.9
+  export CXXFLAGS="-std=c++11 -stdlib=libc++ $CXXFLAGS"
+  export LDFLAGS="-Wl,-rpath,$PREFIX/lib $LDFLAGS"
+fi
+
+if [[ "$c_compiler" == "toolchain_c" ]]; then
+  # unset sysconfig patch set by other compiler package
+  # which is wrong with toolchain_c registered
+  unset _CONDA_PYTHON_SYSCONFIGDATA_NAME
+fi
+
 export CC=mpicc
 
 # Build static.

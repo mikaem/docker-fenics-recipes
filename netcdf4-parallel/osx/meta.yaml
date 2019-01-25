@@ -1,15 +1,15 @@
-{% set version = "1.3.1" %}
+{% set version = "1.4.2" %}
 
 package:
   name: netcdf4-parallel
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/n/netCDF4/netCDF4-{{ version }}.tar.gz
-  sha256: 570ea59992aa6d98a9b672c71161d11ba5683f787da53446086077470a869957
+  url: https://pypi.io/packages/source/n/netCDF4/netCDF4-{{version}}.tar.gz
+  sha256: b934af350459cf9041bcdf5472e2aa56ed7321c018d918e9f325ec9a1f9d1a30
 
 build:
-  number: 1
+  number: 3
   entry_points:
     - ncinfo = netCDF4.utils:ncinfo
     - nc4tonc3 = netCDF4.utils:nc4tonc3
@@ -19,17 +19,20 @@ requirements:
   build:
     - python
     - setuptools
-    - numpy >=1.11
+    - numpy
     - cython >=0.19
-    - hdf5-parallel
+    - {{ mpi }}
+    - hdf5 1.10.4 mpi_{{ mpi }}_*
     - mpi4py
     - libnetcdf-parallel
+    - {{ compiler('c') }}
   run:
     - python
-    - setuptools
-    - numpy >=1.11
+    #- setuptools
+    - numpy
     - mpi4py
-    - hdf5-parallel
+    - {{ mpi }}
+    - hdf5
     - libnetcdf-parallel
 
 test:
@@ -40,8 +43,6 @@ test:
     - ncinfo -h
     - nc4tonc3 -h
     - nc3tonc4 -h
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    #- conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://github.com/Unidata/netcdf4-python
