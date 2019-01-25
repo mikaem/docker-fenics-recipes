@@ -27,11 +27,12 @@ $PYTHON ./configure \
   --with-suitesparse=1 \
   --with-x=0 \
   --download-hypre \
-  --download-metis \
-  --download-parmetis \
-  --download-superlu_dist \
   --with-shared-libraries \
   --prefix=$PREFIX
+
+  #--download-metis \
+  #--download-superlu_dist \
+  #--download-parmetis \
 
 sedinplace() { [[ $(uname) == Darwin ]] && sed -i "" $@ || sed -i"" $@; }
 for path in $PETSC_DIR $PREFIX; do

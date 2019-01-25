@@ -1,10 +1,17 @@
 #!/bin/bash
 
-#if [[ "$c_compiler" == "toolchain_c" ]]; then
-#  # unset sysconfig patch set by other compiler package
-#  # which is wrong with toolchain_c registered
-#  unset _CONDA_PYTHON_SYSCONFIGDATA_NAME
-#fi
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  export MACOSX_DEPLOYMENT_TARGET=10.9
+  export CXXFLAGS="-std=c++11 -stdlib=libc++ $CXXFLAGS"
+  export LDFLAGS="-Wl,-rpath,$PREFIX/lib $LDFLAGS"
+fi
+
+if [[ "$c_compiler" == "toolchain_c" ]]; then
+  # unset sysconfig patch set by other compiler package
+  # which is wrong with toolchain_c registered
+  unset _CONDA_PYTHON_SYSCONFIGDATA_NAME
+fi
 
 export CC=mpicc
 
@@ -21,7 +28,7 @@ cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
       -D ENABLE_DOXYGEN=OFF \
       -D ENABLE_LOGGING=ON \
       -D CURL_INCLUDE_DIR=$PREFIX/include \
-      -D CURL_LIBRARY=$PREFIX/lib/libcurl${SHLIB_EXT} \
+      -D CURL_LIBRARY=$PREFIX/lib/libcurl.dylib \
       $SRC_DIR
 
 make -j$CPU_COUNT
@@ -42,7 +49,7 @@ cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
       -D ENABLE_DOXYGEN=OFF \
       -D ENABLE_LOGGING=ON \
       -D CURL_INCLUDE_DIR=$PREFIX/include \
-      -D CURL_LIBRARY=$PREFIX/lib/libcurl${SHLIB_EXT} \
+      -D CURL_LIBRARY=$PREFIX/lib/libcurl.dylib \
       $SRC_DIR
 make -j$CPU_COUNT
 ctest

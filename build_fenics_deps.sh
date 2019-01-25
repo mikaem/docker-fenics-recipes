@@ -13,16 +13,15 @@ if [ "${CONDA_BUILD_TYPE}" = "host-gcc" ]; then
     conda build slepc/host-gcc
 
 elif [ "${CONDA_BUILD_TYPE}" = "conda-gcc" ]; then
-    # Cannot seem to build VTK with conda gcc
     conda build hdf5-parallel/conda-gcc
     conda build h5py-parallel/conda-gcc
     conda build petsc/conda-gcc
     conda build petsc4py/conda-gcc
     conda build slepc/conda-gcc
 
-elif [ "${CONDA_BUILD_TYPE}" = "osx-gcc" ]; then
+elif [ "${CONDA_BUILD_TYPE}" = "osx-host" ]; then
 
-    conda config --add channels conda-forge
+    #conda config --add channels conda-forge
     #conda build hdf5-parallel/osx-host
     #conda build h5py-parallel/osx-host
     conda build petsc/osx-host

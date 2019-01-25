@@ -17,7 +17,7 @@ if [ "${CONDA_BUILD_TYPE}" = "host-gcc" ]; then
 elif [ "${CONDA_BUILD_TYPE}" = "conda-gcc" ]; then
     conda build cf-fenics/conda-gcc
 
-elif [ "${CONDA_BUILD_TYPE}" = "osx-gcc" ]; then
+elif [ "${CONDA_BUILD_TYPE}" = "osx-host" ]; then
     conda build cf-fenics/osx-host
 
 else
