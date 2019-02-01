@@ -9,4 +9,4 @@ export netCDF4_DIR=$PREFIX
 export HDF5_DIR=$PREFIX
 export CC=mpicc
 
-${PYTHON} -m pip install --no-deps --ignore-installed .
+${PYTHON} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv

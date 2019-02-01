@@ -14,6 +14,9 @@ source:
     #- back_port_573.patch
     #- CMakeLists.patch  # [win]
 
+build:
+  number: 4
+
 requirements:
   host:
     - {{ mpi }}
