@@ -28,6 +28,7 @@ cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
       -D ENABLE_LOGGING=ON \
       -D CURL_INCLUDE_DIR=$PREFIX/include \
       -D CURL_LIBRARY=$PREFIX/lib/libcurl.dylib \
+      -D ENABLE_CDF5=ON \
       $SRC_DIR
 make -j$CPU_COUNT
 # ctest  # Run only for the shared lib build to save time.

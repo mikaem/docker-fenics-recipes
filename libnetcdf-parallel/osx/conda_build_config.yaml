@@ -1,4 +1,5 @@
 mpi:
   - 'mpich'
+  #- 'openmpi'
 CONDA_BUILD_SYSROOT:
   - /Users/mikaelmortensen/Software/MacOSX-SDKs/MacOSX10.9.sdk # [osx]
