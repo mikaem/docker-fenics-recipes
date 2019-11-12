@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 3
+  number: 4
 
 source:
   url: https://github.com/Unidata/netcdf-c/archive/v{{ version }}.tar.gz
@@ -21,7 +21,7 @@ source:
 requirements:
   host:
     - {{ mpi }}
-    - hdf5 1.10.4 mpi_{{ mpi }}_*
+    - hdf5 * mpi_{{ mpi }}_*
     - bzip2
     - curl
     - jpeg
@@ -31,6 +31,7 @@ requirements:
     - make
     - pkg-config
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   run:
     - bzip2
     - curl
